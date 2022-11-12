@@ -1,0 +1,22 @@
+[
+    {
+      "nombre": "Pimientos",
+      "precio": 1
+    },
+    {
+      "nombre": "Champiñones",
+      "precio": 1.5
+    },
+    {
+      "nombre": "Bacon",
+      "precio": 1
+    },
+    {
+      "nombre": "Tomates cherry",
+      "precio": 1
+    },
+    {
+      "nombre": "Pollo",
+      "precio": 2
+    }
+  ]
