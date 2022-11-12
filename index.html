@@ -4,12 +4,122 @@
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Page Title</title>
+    <title>RicoPizza</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-    <script src='main.js'></script>
+    <script></script>
+
 </head>
 <body>
+   
+    <header>
+        <img src="./images/logo.png" alt="logo" />
+
+        <nav> 
+            <a href="#">Nosotros</a>
+            <a href="#">Nuestras Pizzas</a>
+            <a href="#">Tu pedido</a>
+            <a href="#">Contacto</a>
+          </nav>
+    </header> 
+
     
+
+    <section class="contendor-form">
+
+        <form id="formulario" action="#" method="posts">
+
+            <h1 class="form-title">Pedir una RicoPizza</h1>
+
+            <div class="datos-contacto">
+                <h2>Datos de contacto</h2>
+
+                <label for="nombre">Nombre: </label>
+                <input type="text" id="nombre" name="nombre" placeholder="Nombre"><br>
+
+                <span class="mensaje-error" id="mensajeNombre"></span>
+
+                <label for="direccion">Dirección: </label>
+                <input type="text" id="direccion" name="direccion" placeholder="Dirección"><br>
+                <span class="mensaje-error" id="mensajeDireccion"></span>
+
+                <label for="telefono">Teléfono: </label>
+                <input type="tel" id="telefono" name="telefono" placeholder="Teléfono"><br>
+                <span class="mensaje-error" id="mensajeTelefono"></span>
+
+                <label for="email">Email: </label>
+                <input type="email" id="email" name="email" placeholder="Email"><br>
+                <span class="mensaje-error" id="mensajeEmail"></span>
+
+            </div>
+
+            <div class="pizza-masa">
+                <h2>Elige la RicoMasa para tu RicoPizza</h2>
+
+                <input type="radio" value="fina" name="masa" id="masa_fina">
+                <label for="tamaño_pequeña">Fina</label>
+
+                <input type="radio" value="normal" name="masa" id="masa_normal">
+                <label for="tamaño_mediana">Normal</label>
+
+                <input type="radio" value="extra" name="masa" id="masa_extra">
+                <label for="tamaño_grande">Extra</label>
+
+                <input type="radio" value="extraqueso" name="masa" id="masa_queso">
+                <label for="tamaño_grande">Extra con los bordes rellenos de queso</label>
+                <br>
+                <span class="mensaje-error" id="mensaje_masa"></span>
+            </div>
+
+            <div class="pizza-tamanio">
+                <h2>Elige el tamaño</h2>
+                      <input type="radio" value="pequeña" name="tamanio" id="tamaño_pequeña"  required>
+                      <label for="tamaño_pequeña">Pequeña - 5€</label>
+         
+                      <input type="radio" value="mediana" name="tamanio" id="tamaño_mediana">
+                      <label for="tamaño_mediana">Mediana - 10€</label>
+      
+                      <input type="radio" value="familiar" name="tamanio" id="tamaño_grande">
+                      <label for="tamaño_grande">Grande - 15€</label>
+              
+                    <span class="mensaje-error" id="mensaje_tamanio"></span>
+            </div>
+
+            <div class="pizza-ingrediente"
+                <h2>Ingredientes - 1€/ud:</h2>
+
+                <input type="checkbox" id="ingrediente1" name="ingredientes" value="Queso">
+                <label for="ingrediente1">Queso</label>
+
+                <input type="checkbox" id="ingrediente2" name="ingredientes" value="Champiñones">
+                <label for="ingrediente2">Champiñones</label>
+
+                <input type="checkbox" id="ingrediente3" name="ingredientes" value="Aceitunas">
+                <label for="ingrediente3">Aceitunas</label>
+
+                <input type="checkbox" id="ingrediente4" name="ingredientes" value="Tomates Cherry">
+                <label for="ingrediente4">Tomates Cherry</label>
+
+                <input type="checkbox" id="ingrediente5" name="ingredientes" value="Bacon">
+                <label for="ingrediente5">Bacon</label>
+
+                <input type="checkbox" id="ingrediente6" name="ingredientes" value="Pollo">
+                <label for="ingrediente6">Pollo</label>
+                <br>
+                <span class="mensaje-error" id="mensaje_ingredientes"></span>
+            </div>
+
+            <div class="mostrar-precio">
+                <!-- Creamos el parrafo que mostrará el precio de la pizza según lo que seleccionemos -->
+                <p id="info-precio" class="btn"></p>
+            </div>
+
+            <div class="enviar-mensaje">
+                <input type="submit" class="boton-enviar" value="Pedir RicoPizza">
+            </div>
+        </form>
+    </section>
+
+
 </body>
 </html>
