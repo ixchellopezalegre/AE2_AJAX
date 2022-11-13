@@ -136,7 +136,7 @@ const cargarTamanios = (listaTamanios) => {
 export function calcularPrecio(){
     let precio = 0;
     //Calculamos el precio del tamanio elegido
-   /* const tamanioElegido = document.querySelector(
+    const tamanioElegido = document.querySelector(
         'input[name="tamanios"]:checked'
     );
     if (tamanioElegido != null)
@@ -144,7 +144,7 @@ export function calcularPrecio(){
             //buscamos el tamanio con un nombre igual al que tenemos 
             (tam) => tam.nombre === tamanioElegido.value
         ).precio;
-        */
+        
     
     //Calculamos el precio de los ingredientes
     const ingredientesElegidos = document.querySelectorAll(
@@ -174,7 +174,15 @@ const agregarEventListeners = () => {
     //Asignamos los eventListeners
     submit.onclick = validacion.validarFormulario;
 
-      // validacion inmediata del minimo de ingredientes
+    //validacion inmediata de los radio button tamanio
+    //y actualizacion del precio
+    const tamanioRadioButton = document.getElementsByName("tamanios");
+    for (var i = 0; i < tamanioRadioButton.length; i++) {
+        tamanioRadioButton[i].onchange = calcularPrecio;
+        tamanioRadioButton[i].addEventListener("click", validacion.validarTamanio);
+    }
+
+    // validacion inmediata del minimo de ingredientes
     //y actualizacion del precio
     const ingrCheckbox = document.querySelectorAll(
         '#ingredientes input[type="checkbox"]'

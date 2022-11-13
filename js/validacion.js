@@ -7,7 +7,7 @@ function validarFormulario(event) {
     let valido = true;
     if (!validarMinIngredientes()) valido = false;
     //if (!validarMasa()) valido = false;
-   // if (!validarTamanio()) valido = false;
+    if (!validarTamanio()) valido = false;
 
     if(!valido) {
         alert("Parece que hay errores en el formulario");
@@ -19,6 +19,43 @@ function validarFormulario(event) {
     }
 }
 
+/*
+
+ *============= Validacion Radio buttons: tamanio y tipo de masa =============
+ */
+
+/**
+ * Funcion que verifica que se ha seleccionado únicamente un tamanio.
+ * @returns true si se han aceptado, false si no
+ */
+ function validarTamanio() {
+    let valido = false;
+    const mensaje = document.getElementById("mensaje-tamanio");
+    const tamanioRB = document.getElementsByName("tamanios");
+  
+    // Iteramos por los radio button para ver si alguno esta marcado
+    for (var i = 0; i < tamanioRB.length; i++) {
+      if (tamanioRB[i].checked) {
+        valido = true;
+        break;
+      }
+    }
+  
+    // Iteramos por los radio button para aniadir o quitar la clase "invalido"
+    for (var j = 0; j < tamanioRB.length; j++) {
+      if (!valido) {
+        tamanioRB[j].classList.add("invalido");
+      } else if (tamanioRB[j].classList.contains("invalido")) {
+        tamanioRB[j].classList.remove("invalido");
+      }
+    }
+  
+    //Editamos el mensaje de error segun el resultado de la validacion
+    if (valido) mensaje.textContent = "";
+    else mensaje.textContent = "Elige el tamaño de la pizza";
+  
+    return valido;
+  }
 /*
  *============= Validacion minimo ingredientes =============
  */
@@ -64,10 +101,10 @@ function validarFormulario(event) {
     //validarEmail,
     validarFormulario,
     //validarMasa,
-    validarMinIngredientes
+    validarMinIngredientes,
     //validarNombre,
     //validarRestaurante,
-    //validarTamanio,
+    validarTamanio
     //validarTerminos,
     //validarTlf,
   };
