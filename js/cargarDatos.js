@@ -1,4 +1,5 @@
 import * as util from "./util.js";
+import * as validacion from "./validacion.js";
 
 window.onload = cargarDatos;
 
@@ -119,5 +120,19 @@ const cargarTamanios = (listaTamanios) => {
         //Colocamos el label en el documento
         pWrapper.appendChild(label);
     });
+
+};
+
+/**
+ * Función que agrega los eventListeners a todos los elementos 
+ * del formulario
+ */
+const agregarEventListeners = () => {
+    //Asignamos los eventListeners
+    //submit.onclick = validacion.validarFormulario;
+
+     //recarga de la pagina a partir del boton de refrescar
+    const refrescar = document.getElementById("refresh");
+    refrescar.onclick = cargarDatos;
 
 };
