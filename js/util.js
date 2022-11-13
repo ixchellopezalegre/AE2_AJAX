@@ -18,7 +18,7 @@
    * @param {*} path ruta al archivo
    */
   export function enviarRequest(method, path) {
-    // envolvemos la funcion en una Promise para poder usarla en funciones
+    // Envolvemos la funcion en una Promise para poder usarla en funciones
     // en combinacion con then() o await
     const promise = new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
