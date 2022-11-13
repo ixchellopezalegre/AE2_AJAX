@@ -8,13 +8,16 @@
     <title>RicoPizza</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' href='./css/style.css'>
+
+
+    <script src="./js/cargarDatos.js" type="module"></script>
     <script></script>
 
 </head>
 <body>
    
     <header>
-        <img src='./images/logo.png' alt="logo" />
+        <img src='./images/logo.png' alt="logo_rico_pizza" />
 
         <nav> 
             <a href="#">Nosotros</a>
@@ -25,106 +28,85 @@
 
     </header> 
 
-    
-
     <section class="contendor-form">
 
+        <label class="form-title">Pedir una RicoPizza</label>
         <form id="formulario" action="#" method="posts">
+            
+            <section>
+                <label for="datos-contacto">Datos de contacto</label>
+                <fieldset class="datos-contacto">
+                    
+                    
+                    <label for="nombre">Nombre: </label>
+                    <input type="text" id="nombre" name="nombre" placeholder="Nombre"><br>
+                    <span class="mensaje-error" id="mensaje-nombre"></span>
+                    
+                    <label for="apellidos">Apellidos: </label>
+                    <input type="text" id="apellidos" name="apellidos" placeholder="Apellidos"><br>
+                    <span class="mensaje-error" id="mensaje-apellidos"></span>
 
-            <h1 class="form-title">Pedir una RicoPizza</h1>
+                    <label for="direccion">Dirección: </label>
+                    <input type="text" id="direccion" name="direccion" placeholder="Dirección"><br>
+                    <span class="mensaje-error" id="mensaje-direccion"></span>
 
-            <div class="datos-contacto">
-                <h2>Datos de contacto</h2>
+                    <label for="telefono">Teléfono: </label>
+                    <input type="tel" id="telefono" name="telefono" placeholder="Teléfono"><br>
+                    <span class="mensaje-error" id="mensaje-telefono"></span>
 
-                <label for="nombre">Nombre: </label>
-                <input type="text" id="nombre" name="nombre" placeholder="Nombre"><br>
-                <span class="mensaje-error" id="mensaje-nombre"></span>
+                    <label for="email">Email: </label>
+                    <input type="email" id="email" name="email" placeholder="Email"><br>
+                    <span class="mensaje-error" id="mensaje-email"></span>
+                </fieldset>
+            </section>
+            <section>
+                <label for="opciones-masa">Elige la RicoMasa </label>
+                <fieldset class="opciones-masa">
+                    <span class="mensaje-error" id="mensaje-masa"></span>
+                </fieldset>
 
-                <label for="apellidos">Apellidos: </label>
-                <input type="text" id="apellidos" name="apellidos" placeholder="Apellidos"><br>
-                <span class="mensaje-error" id="mensaje-apellidos"></span>
-
-                <label for="direccion">Dirección: </label>
-                <input type="text" id="direccion" name="direccion" placeholder="Dirección"><br>
-                <span class="mensaje-error" id="mensaje-direccion"></span>
-
-                <label for="telefono">Teléfono: </label>
-                <input type="tel" id="telefono" name="telefono" placeholder="Teléfono"><br>
-                <span class="mensaje-error" id="mensaje-telefono"></span>
-
-                <label for="email">Email: </label>
-                <input type="email" id="email" name="email" placeholder="Email"><br>
-                <span class="mensaje-error" id="mensaje-email"></span>
-
-            </div>
-
-            <div class="pizza-masa">
-                <h2>Elige la RicoMasa </h2>
-
-                <input type="radio" value="fina" name="masa" id="masa_fina">
-                <label for="tamaño_pequeña">Fina</label>
-
-                <input type="radio" value="normal" name="masa" id="masa_normal">
-                <label for="tamaño_mediana">Normal</label>
-
-                <input type="radio" value="extra" name="masa" id="masa_extra">
-                <label for="tamaño_grande">Extra</label>
-
-                <input type="radio" value="extraqueso" name="masa" id="masa_queso">
-                <label for="tamaño_grande">Extra con los bordes rellenos de queso</label>
-                <br>
-                <span class="mensaje-error" id="mensaje-masa"></span>
-            </div>
-
-            <div class="pizza-tamanio">
-                <h2>Elige un RicoTamaño</h2>
-                      <input type="radio" value="pequeña" name="tamanio" id="tamaño_pequeña">
-                      <label for="tamaño_pequeña">Pequeña - 5€</label>
-         
-                      <input type="radio" value="mediana" name="tamanio" id="tamaño_mediana">
-                      <label for="tamaño_mediana">Mediana - 10€</label>
-      
-                      <input type="radio" value="familiar" name="tamanio" id="tamaño_grande">
-                      <label for="tamaño_grande">Grande - 15€</label>
-              
+                <label for="opciones-tamanio">Elige un RicoTamaño</label>
+                <fieldset class="opciones-tamanio">
                     <span class="mensaje-error" id="mensaje-tamanio"></span>
-            </div>
+                </fieldset>
 
-            <div class="pizza-ingrediente">
-                <h2>Elige los RicoIngredientes - 1€/ud:</h2>
+                <label for="opciones-ingrediente">Elige los RicoIngredientes - 1€/ud:</label>
+                <fieldset class="opciones-ingrediente">
+                    <span class="mensaje-error" id="mensaje-ingredientes"></span>
+                </fieldset>
 
-                <input type="checkbox" id="ingrediente1" name="ingredientes" value="Queso">
-                <label for="ingrediente1">Queso</label>
-
-                <input type="checkbox" id="ingrediente2" name="ingredientes" value="Champiñones">
-                <label for="ingrediente2">Champiñones</label>
-
-                <input type="checkbox" id="ingrediente3" name="ingredientes" value="Aceitunas">
-                <label for="ingrediente3">Aceitunas</label>
-
-                <input type="checkbox" id="ingrediente4" name="ingredientes" value="Tomates Cherry">
-                <label for="ingrediente4">Tomates Cherry</label>
-
-                <input type="checkbox" id="ingrediente5" name="ingredientes" value="Bacon">
-                <label for="ingrediente5">Bacon</label>
-
-                <input type="checkbox" id="ingrediente6" name="ingredientes" value="Pollo">
-                <label for="ingrediente6">Pollo</label>
-                <br>
-                <span class="mensaje-error" id="mensaje-ingredientes"></span>
-            </div>
-
-            <div class="mostrar-precio">
-                <!-- Creamos el parrafo que mostrará el precio de la pizza según lo que seleccionemos -->
-                <p id="info-precio" class="btn"></p>
-            </div>
-
-            <div class="enviar-mensaje">
-                <input type="submit" class="boton-enviar" value="Pedir RicoPizza">
-            </div>
+                <label for="restaurante">Elige un restaurante</label>
+                <fieldset class="opciones-restaurante">
+                    <select name="restaurante" id="restaurante" required>
+                        <option value="">Elige un restaurante</option>
+                        <option value="res1">Alcorcón</option>
+                        <option value="res2">Tribunal</option>
+                        <option value="res3">Legazpi</option>
+                        <option value="res4">Chamartín</option>
+                    </select>
+                </fieldset>
+                <fieldset class="alergias-terminos">
+                    <label for="textArea">Introduce aquí información sobre alergias u otras notas adicionales:</label>
+                    <textarea id="textArea" cols="40" rows="4" placeholder="Escribe aquí:"></textarea>           
+                    <div>
+                        <input type="checkbox" name="terminos" id="terminos" value="true" required>
+                        <label for="terminos">Acepto los términos y condiciones</label>
+                        <span class="mensaje-error" id="mensaje-terminos"></span>
+                    </div>
+                   
+                </fieldset>
+            </section>
+            <section>
+                <fieldset class="acciones">
+                    <!-- Creamos el parrafo que mostrará el precio de la pizza según lo que seleccionemos -->
+                    <p id="info-precio" class="button"></p>
+                    <button type="submit" id="submit" name="submit" class="button">Enviar Pedido</button>
+                    <button type="reset" id="reset" name="reset" class="button">Borrar Formulario</button>
+                    <button type="button" id="refresh" name="refresh" class="button">Refrescar datos</button>
+                </fieldset>
+            </section>    
         </form>
     </section>
-
 
 </body>
 </html>
