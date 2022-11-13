@@ -76,7 +76,7 @@ const cargarMasas = (listaMasa) =>{
         const rdio = document.createElement("input");
         rdio.setAttribute("type","radio");
         rdio.setAttribute("id",idMas);
-        rdio.setAttribute("name","masa");
+        rdio.setAttribute("name","masas");
         rdio.setAttribute("value",masas);
         //Colocamos los RB en el documento
         pWrapper.appendChild(rdio);
@@ -176,18 +176,24 @@ const agregarEventListeners = () => {
 
     //validacion inmediata de los radio button tamanio
     //y actualizacion del precio
-    const tamanioRadioButton = document.getElementsByName("tamanios");
-    for (var i = 0; i < tamanioRadioButton.length; i++) {
-        tamanioRadioButton[i].onchange = calcularPrecio;
-        tamanioRadioButton[i].addEventListener("click", validacion.validarTamanio);
+    const tamanioRB = document.getElementsByName("tamanios");
+    for (var i = 0; i < tamanioRB.length; i++) {
+        tamanioRB[i].onchange = calcularPrecio;
+        tamanioRB[i].addEventListener("click", validacion.validarTamanio);
+    }
+
+    //validacion inmediata de los radio button MASA
+    const masaRB = document.getElementsByName("masas");
+    for (var i = 0; i < masaRB.length; i++) {
+        masaRB[i].addEventListener("click", validacion.validarMasa);
     }
 
     // validacion inmediata del minimo de ingredientes
     //y actualizacion del precio
-    const ingrCheckbox = document.querySelectorAll(
+    const ingrCB = document.querySelectorAll(
         '#ingredientes input[type="checkbox"]'
     );
-    ingrCheckbox.forEach((chckbx) => {
+    ingrCB.forEach((chckbx) => {
         chckbx.onchange = calcularPrecio;
         chckbx.addEventListener("change", validacion.validarMinIngredientes);
     });

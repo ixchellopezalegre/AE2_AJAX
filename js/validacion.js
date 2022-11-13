@@ -4,9 +4,13 @@ import { calcularPrecio } from "./cargarDatos.js";
  */
 
 function validarFormulario(event) {
+
+    console.log("Validando los datos del formulario")
+    console.log(" ");
+
     let valido = true;
     if (!validarMinIngredientes()) valido = false;
-    //if (!validarMasa()) valido = false;
+    if (!validarMasa()) valido = false;
     if (!validarTamanio()) valido = false;
 
     if(!valido) {
@@ -23,6 +27,40 @@ function validarFormulario(event) {
 
  *============= Validacion Radio buttons: tamanio y tipo de masa =============
  */
+
+ /**
+ * Funcion que verifica que se ha seleccionado únicamente un tipo de masa.
+ * @returns true si se han aceptado, false si no
+ */
+
+function validarMasa() {
+    let valido = false;
+    const mensaje= document.getElementById("mensaje-masa");
+    const masaRB = document.getElementsByName("masas");
+  
+    // Iteramos por los radio button para ver si alguno esta marcado
+    for (var i = 0; i < masaRB.length; i++) {
+      if (masaRB[i].checked) {
+        valido = true;
+        break;
+      }
+    }
+  
+    // Iteramos por los radio button para aniadir o quitar la clase "invalido"
+    for (var j = 0; j < masaRB.length; j++) {
+      if (!valido) {
+        masaRB[j].classList.add("invalido");
+      } else if (masaRB[j].classList.contains("invalido")) {
+        masaRB[j].classList.remove("invalido");
+      }
+    }
+  
+    //Editamos el mensaje de error segun el resultado de la validacion
+    if (valido) mensaje.textContent = "";
+    else mensaje.textContent = "Elige el tipo de masa";
+  
+    return valido;
+  }
 
 /**
  * Funcion que verifica que se ha seleccionado únicamente un tamanio.
@@ -100,7 +138,7 @@ function validarFormulario(event) {
     //validarApellidos,
     //validarEmail,
     validarFormulario,
-    //validarMasa,
+    validarMasa,
     validarMinIngredientes,
     //validarNombre,
     //validarRestaurante,
