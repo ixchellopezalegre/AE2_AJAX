@@ -86,9 +86,10 @@
                     <h3>Aquí se mostrará el precio</h3>
                     <p id="info-precio" class="btn"></p>
                 </section>
-                <label for="restaurante">Elige un restaurante</label>
                 <fieldset class="opciones-restaurante">
-                    <select name="restaurante" id="restaurante" required>
+                <label for="restaurante">Elige un restaurante</label>
+              
+                    <select name="restaurante" id="restaurante">
                         <option value="">Elige un restaurante</option>
                         <option value="res1">Alcorcón</option>
                         <option value="res2">Tribunal</option>
@@ -100,7 +101,7 @@
                     <label for="textArea">Introduce aquí información sobre alergias u otras notas adicionales:</label>
                     <textarea id="textArea" cols="40" rows="4" placeholder="Escribe aquí:"></textarea>           
                     <div>
-                        <input type="checkbox" name="terminos" id="terminos" value="true" required>
+                        <input type="checkbox" name="terminos" id="terminos" value="true">
                         <label for="terminos">Acepto los términos y condiciones</label>
                         <span class="mensaje-error" id="mensaje-terminos"></span>
                     </div>

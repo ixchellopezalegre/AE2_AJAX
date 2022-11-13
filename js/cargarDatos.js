@@ -14,6 +14,8 @@ async function cargarDatos() {
     cargarIngredientes(ingredientes);
     cargarMasas(infoPizza.masas);
     cargarTamanios(infoPizza.tamanios);
+
+    agregarEventListeners();
 }
 
 let formulario = document.getElementById("formulario")
@@ -134,7 +136,7 @@ const cargarTamanios = (listaTamanios) => {
 export function calcularPrecio(){
     let precio = 0;
     //Calculamos el precio del tamanio elegido
-    const tamanioElegido = document.querySelector(
+   /* const tamanioElegido = document.querySelector(
         'input[name="tamanios"]:checked'
     );
     if (tamanioElegido != null)
@@ -142,11 +144,13 @@ export function calcularPrecio(){
             //buscamos el tamanio con un nombre igual al que tenemos 
             (tam) => tam.nombre === tamanioElegido.value
         ).precio;
+        */
     
     //Calculamos el precio de los ingredientes
-    const ingredientesElegidos = document.querySelector(
-        '#opciones-ingredientes input[type="checkbox"]:checked'
+    const ingredientesElegidos = document.querySelectorAll(
+        '#ingredientes input[type="checkbox"]:checked'
     );
+    console.log(ingredientesElegidos);
     ingredientesElegidos.forEach((ingElegido) => {
         precio += ingredientes.find(
             (ing) => ing.nombre.split(" ").join("") === ingElegido.name
@@ -156,7 +160,7 @@ export function calcularPrecio(){
     //Por último aztualizamos el precio mostrado
     const infoPrecio = document.getElementById("info-precio");
     infoPrecio.textContent = `Precio: ${precio}\u20AC`;
-    inforPrecio.classList.add("visible");
+    infoPrecio.classList.add("visible");
     
     return precio;
     
@@ -168,7 +172,17 @@ export function calcularPrecio(){
  */
 const agregarEventListeners = () => {
     //Asignamos los eventListeners
-    //submit.onclick = validacion.validarFormulario;
+    submit.onclick = validacion.validarFormulario;
+
+      // validacion inmediata del minimo de ingredientes
+    //y actualizacion del precio
+    const ingrCheckbox = document.querySelectorAll(
+        '#ingredientes input[type="checkbox"]'
+    );
+    ingrCheckbox.forEach((chckbx) => {
+        chckbx.onchange = calcularPrecio;
+        chckbx.addEventListener("change", validacion.validarMinIngredientes);
+    });
 
      //recarga de la pagina a partir del boton de refrescar
     const refrescar = document.getElementById("refresh");
