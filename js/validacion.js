@@ -13,6 +13,8 @@ function validarFormulario(event) {
     if (!validarMasa()) valido = false;
     if (!validarTamanio()) valido = false;
 
+    if (!validarTerminos()) valido = false;
+
     if(!valido) {
         alert("Parece que hay errores en el formulario");
         event.preventDefault();
@@ -25,7 +27,7 @@ function validarFormulario(event) {
 
 /*
 
- *============= Validacion Radio buttons: tamanio y tipo de masa =============
+ *============= Validacion Radio buttons: tipos de masa y tamanio =============
  */
 
  /**
@@ -134,6 +136,26 @@ function validarMasa() {
     return valido; //devolvemos el resultado de la validacion
   }
 
+  /**
+ * Funcion que verifica que los terminos y condiciones han sido aceptados
+ * @returns true si se han aceptado, false si no
+ */
+function validarTerminos() {
+    const mensaje = document.getElementById("mensaje-terminos");
+  
+    if (!terminos.checked) {
+      terminos.classList.add("invalido");
+      mensaje.textContent =
+        "Es necesario aceptar los terminos y condiciones antes de realizar el pedido";
+    } else {
+      if (terminos.classList.contains("invalido"))
+        terminos.classList.remove("invalido");
+        mensaje.textContent = "";
+    }
+  
+    return terminos.checked;
+  }
+
   export {
     //validarApellidos,
     //validarEmail,
@@ -142,7 +164,7 @@ function validarMasa() {
     validarMinIngredientes,
     //validarNombre,
     //validarRestaurante,
-    validarTamanio
-    //validarTerminos,
+    validarTamanio,
+    validarTerminos
     //validarTlf,
   };

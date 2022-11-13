@@ -198,6 +198,10 @@ const agregarEventListeners = () => {
         chckbx.addEventListener("change", validacion.validarMinIngredientes);
     });
 
+    //validacion inmediata de los terminos y condiciones
+    const terminos = document.getElementById("terminos");
+    terminos.onclick = validacion.validarTerminos;
+
      //recarga de la pagina a partir del boton de refrescar
     const refrescar = document.getElementById("refresh");
     refrescar.onclick = cargarDatos;
