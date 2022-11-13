@@ -74,13 +74,18 @@
                     <span class="mensaje-error" id="mensaje-tamanio"></span>
                 </fieldset>
 
-                <label for="opciones-ingredientes">Elige los RicoIngredientes - 1€/ud:</label>
+                <label for="opciones-ingredientes">Elige los RicoIngredientes</label>
                 <fieldset class="opciones-ingredientes" >
                     <div id="ingredientes">
                     <span class="mensaje-error" id="mensaje-ingredientes"></span>
                     </div>
                 </fieldset>
 
+                <section>
+                    <!-- Creamos el parrafo que mostrará el precio de la pizza según lo que seleccionemos -->
+                    <h3>Aquí se mostrará el precio</h3>
+                    <p id="info-precio" class="btn"></p>
+                </section>
                 <label for="restaurante">Elige un restaurante</label>
                 <fieldset class="opciones-restaurante">
                     <select name="restaurante" id="restaurante" required>
@@ -104,8 +109,7 @@
             </section>
             <section>
                 <fieldset class="acciones">
-                    <!-- Creamos el parrafo que mostrará el precio de la pizza según lo que seleccionemos -->
-                    <p id="info-precio" class="button"></p>
+                    
                     <button type="submit" id="submit" name="submit" class="button">Enviar Pedido</button>
                     <button type="reset" id="reset" name="reset" class="button">Borrar Formulario</button>
                     <button type="button" id="refresh" name="refresh" class="button">Refrescar datos</button>

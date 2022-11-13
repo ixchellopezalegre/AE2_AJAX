@@ -1,0 +1,45 @@
+#acciones {
+    display: flex;
+    justify-content: space-evenly;
+  }
+  
+  button {
+    display: inline-block;
+    text-decoration: none;
+    padding: 1rem 1.5rem;
+    color: purple;
+    cursor: pointer;
+    border: 2px purple solid;
+    background: inherit;
+  }
+  
+  button:hover,
+  button:active {
+    color: white;
+    background-color: purple;
+  }
+  
+  .cta {
+    font-weight: bold;
+    background: purple;
+    color: white;
+    border-color: purple;
+  }
+  
+  .cta:active,
+  .cta:hover {
+    background: white;
+    color: purple;
+  }
+
+  #info-precio {
+    color: purple;
+    border: 1px purple dashed;
+    padding: 1rem 1.5rem;
+    margin: 0;
+    display: none;
+  }
+  
+  #info-precio.visible {
+    display: unset;
+  }

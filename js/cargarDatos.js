@@ -123,6 +123,45 @@ const cargarTamanios = (listaTamanios) => {
 
 };
 
+/*
+ * CALCULAR EL PRECIO DE LA PIZZA
+ */
+/**
+ * Funcion que calcula el precio de la pizza 
+ * segun la cantidad de ingredientes y el tamanio elegidos
+ * @returns el precio
+ */
+export function calcularPrecio(){
+    let precio = 0;
+    //Calculamos el precio del tamanio elegido
+    const tamanioElegido = document.querySelector(
+        'input[name="tamanios"]:checked'
+    );
+    if (tamanioElegido != null)
+        precio += infoPizza.tamanios.find(
+            //buscamos el tamanio con un nombre igual al que tenemos 
+            (tam) => tam.nombre === tamanioElegido.value
+        ).precio;
+    
+    //Calculamos el precio de los ingredientes
+    const ingredientesElegidos = document.querySelector(
+        '#opciones-ingredientes input[type="checkbox"]:checked'
+    );
+    ingredientesElegidos.forEach((ingElegido) => {
+        precio += ingredientes.find(
+            (ing) => ing.nombre.split(" ").join("") === ingElegido.name
+        ).precio;
+    });
+
+    //Por último aztualizamos el precio mostrado
+    const infoPrecio = document.getElementById("info-precio");
+    infoPrecio.textContent = `Precio: ${precio}\u20AC`;
+    inforPrecio.classList.add("visible");
+    
+    return precio;
+    
+}
+
 /**
  * Función que agrega los eventListeners a todos los elementos 
  * del formulario
