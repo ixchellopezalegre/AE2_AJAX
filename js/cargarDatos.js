@@ -174,6 +174,9 @@ const agregarEventListeners = () => {
     //Asignamos los eventListeners
     submit.onclick = validacion.validarFormulario;
 
+    //validacion inmediata de nombre
+    nombre.onkeyup = validacion.validarNombre;
+
     //validacion inmediata de los radio button tamanio
     //y actualizacion del precio
     const tamanioRB = document.getElementsByName("tamanios");
@@ -197,6 +200,10 @@ const agregarEventListeners = () => {
         chckbx.onchange = calcularPrecio;
         chckbx.addEventListener("change", validacion.validarMinIngredientes);
     });
+
+    //Validacion inmediata del restaurante
+    restaurante.addEventListener("change", validacion.validarRestaurante);
+    //valida cada vez que cambia la seleccion
 
     //validacion inmediata de los terminos y condiciones
     const terminos = document.getElementById("terminos");

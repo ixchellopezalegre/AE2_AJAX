@@ -8,9 +8,10 @@
     <title>RicoPizza</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' href='./css/style.css'>
-
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD_9g_nd8FaCsF_X24RWDsY8ifYdyLP7dc&callback=initMap"></script>-->
     <script src="./js/cargarDatos.js" type="module"></script>
-    <script></script>
+    <script src="./js/mapa.js" defer></script>
 
 </head>
 <body>
@@ -36,7 +37,6 @@
                 <label for="datos-contacto">Datos de contacto</label>
                 <fieldset class="datos-contacto">
                     
-                    
                     <label for="nombre">Nombre: </label>
                     <input type="text" id="nombre" name="nombre" placeholder="Nombre"><br>
                     <span class="mensaje-error" id="mensaje-nombre"></span>
@@ -58,19 +58,20 @@
                     <span class="mensaje-error" id="mensaje-email"></span>
                 </fieldset>
             </section>
-            <section>
-                <label for="opciones-masa">Elige la RicoMasa </label>
-                <fieldset class="opciones-masa">
-                    <div id="masas">
-                    </div>
-                    <span class="mensaje-error" id="mensaje-masa"></span>
-                </fieldset>
 
+            <section>
                 <label for="opciones-tamanio">Elige un RicoTamaño</label>
                 <fieldset class="opciones-tamanio">
                     <div id="tamanios">
                     </div>
                     <span class="mensaje-error" id="mensaje-tamanio"></span>
+                </fieldset>
+
+                <label for="opciones-masa">Elige la RicoMasa </label>
+                <fieldset class="opciones-masa">
+                    <div id="masas">
+                    </div>
+                    <span class="mensaje-error" id="mensaje-masa"></span>
                 </fieldset>
 
                 <label for="opciones-ingredientes">Elige los RicoIngredientes</label>
@@ -86,6 +87,7 @@
                     <h3>Aquí se mostrará el precio</h3>
                     <p id="info-precio" class="btn"></p>
                 </section>
+
                 <fieldset class="opciones-restaurante">
                 <label for="restaurante">Elige un restaurante</label>
                     <select name="restaurante" id="restaurante">
@@ -95,7 +97,11 @@
                         <option value="res3">Legazpi</option>
                         <option value="res4">Chamartín</option>
                     </select>
+                    <span class="mensaje-error" id="mensaje-restaurante"></span>
+                    <div class="map-container" id="googleMap">
+                    </div>
                 </fieldset>
+
                 <fieldset class="alergias-terminos">
                     <label for="textArea">Introduce aquí información sobre alergias u otras notas adicionales:</label>
                     <textarea id="textArea" cols="40" rows="4" placeholder="Escribe aquí:"></textarea>           
@@ -104,17 +110,17 @@
                         <label for="terminos">Acepto los términos y condiciones</label>
                         <span class="mensaje-error" id="mensaje-terminos"></span>
                     </div>
-                   
                 </fieldset>
             </section>
+
             <section>
-                <fieldset class="acciones">
-                    
+                <fieldset class="acciones">                
                     <button type="submit" id="submit" name="submit" class="button">Enviar Pedido</button>
                     <button type="reset" id="reset" name="reset" class="button">Borrar Formulario</button>
                     <button type="button" id="refresh" name="refresh" class="button">Refrescar datos</button>
                 </fieldset>
-            </section>    
+            </section>  
+
         </form>
     </section>
 

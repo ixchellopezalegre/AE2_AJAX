@@ -9,10 +9,11 @@ function validarFormulario(event) {
     console.log(" ");
 
     let valido = true;
+    if (!validarNombre()) valido = false;
     if (!validarMinIngredientes()) valido = false;
     if (!validarMasa()) valido = false;
     if (!validarTamanio()) valido = false;
-
+    if (!validarRestaurante()) valido = false;
     if (!validarTerminos()) valido = false;
 
     if(!valido) {
@@ -23,6 +24,42 @@ function validarFormulario(event) {
     ) {
         event.preventDefault();
     }
+}
+
+/*
+ *============= Validacion nombre =============
+ */
+/**
+ * Funcion que verifica que el nombre tiene un formato válido además de eliminar espacios innecesarios
+ * @returns true si el nombre es válido, false si no
+ */
+
+ function validarNombre() {
+  const mensaje = document.getElementById("mensaje-nombre");
+
+  // Con esta línea de código eliminamos los espacios que pueda haber al principio o al final para no tenerlos en cuenta
+  //de cara a compararlo con el patrón siguiente
+  const nombreUsuario = nombre.value.replace(/\s/g, "");
+
+  // La expresión regular usada tanto en validarNombre() como en validarApellidos() incluye acentos y también la ñ
+  //También se asegura de que la primera letra del nombre y apellido sea una mayúscula
+  //Del mismo modo se asegura de que el input no se componga solo de espacios en blanco
+  const pattern =
+    /(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/;
+
+  //A través de test comparamos el input con el patrón (al cual se le han eliminado los espacios)
+  const valido = pattern.test(nombreUsuario);
+
+  // Si el test devuelve false, aparecerá un mensaje de error que pedirá un input diferente
+  if (!valido) {
+    nombre.classList.add("invalido");
+    mensaje.textContent = "Introduce un nombre válido";
+  } else {
+    if (nombre.classList.contains("invalido"))
+      nombre.classList.remove("invalido");
+      mensaje.textContent = "";
+  }
+  return valido;
 }
 
 /*
@@ -136,6 +173,35 @@ function validarMasa() {
     return valido; //devolvemos el resultado de la validacion
   }
 
+
+  /*
+ *============= Validacion restaurante =============
+ */
+
+/**
+ * Funcion que verifica que hay un restaurante seleccionado
+ * @returns true si se ha elegido restaurante, false si no
+ */
+ function validarRestaurante() {
+    const opcionesRestaurante = restaurante.querySelectorAll(
+      'option:not([value=""])' //descartamos la opcion por defecto
+    );
+
+    for (const rest of opcionesRestaurante) {
+      if (rest.selected) {
+        if (restaurante.classList.contains("invalido"))
+          restaurante.classList.remove("invalido");
+        return true;
+      }
+    }
+    restaurante.classList.add("invalido");
+    return false;
+}
+
+/*
+ * ============= Validacion terminos =============
+ */
+
   /**
  * Funcion que verifica que los terminos y condiciones han sido aceptados
  * @returns true si se han aceptado, false si no
@@ -152,19 +218,20 @@ function validarTerminos() {
         terminos.classList.remove("invalido");
         mensaje.textContent = "";
     }
-  
+
     return terminos.checked;
   }
 
   export {
+    validarFormulario,
+    validarNombre,
     //validarApellidos,
     //validarEmail,
-    validarFormulario,
+    //validarTlf,
+    validarTamanio,
     validarMasa,
     validarMinIngredientes,
-    //validarNombre,
-    //validarRestaurante,
-    validarTamanio,
+    validarRestaurante,
     validarTerminos
-    //validarTlf,
+    
   };
