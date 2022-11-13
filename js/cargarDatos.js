@@ -12,6 +12,7 @@ async function cargarDatos() {
 
     cargarIngredientes(ingredientes);
     cargarMasas(infoPizza.masas);
+    cargarTamanios(infoPizza.tamanios);
 }
 
 let formulario = document.getElementById("formulario")
@@ -85,7 +86,38 @@ const cargarMasas = (listaMasa) =>{
         pWrapper.appendChild(label);
 
     })
-    
+};
 
+const cargarTamanios = (listaTamanios) => {
+    //Eliminamos la lista de tamaños existente
+    const tamanioNode = document.getElementById("tamanios");
+    util.limpiarNodo(tamanioNode, "div");
 
-}
+    //Recorremos la lista de tamaños:
+    listaTamanios.forEach((tamanios)=> {
+        //Generamos un paragrafo p para cada tipo de tamaño 
+        //en la sección correspondiente del HTML
+        const pWrapper = document.createElement("p");
+        //pWrapper.className =
+        tamanioNode.appendChild(pWrapper);
+
+        //Generamos un id que será el tamaño sin espacios
+        const idTam = `tam-${tamanios.nombre}`;
+        //Creamos los radio Buttons
+        const rdio = document.createElement("input");
+        rdio.setAttribute("type","radio");
+        rdio.setAttribute("id",idTam);
+        rdio.setAttribute("name","tamanios");
+        rdio.setAttribute("value",tamanios.nombre);
+        //Colocamos el RB en el documento
+        pWrapper.appendChild(rdio);
+
+        //Creamos el label
+        const label = document.createElement("label");
+        label.setAttribute("for", idTam);
+        label.textContent = tamanios.nombre;
+        //Colocamos el label en el documento
+        pWrapper.appendChild(label);
+    });
+
+};
