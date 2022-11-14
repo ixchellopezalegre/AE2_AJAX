@@ -9,9 +9,10 @@
 
     <link rel='icon' type='image/png' sizes='32x32' href='images/favicon-32x32.png'/>
     <link rel='stylesheet' href='./css/style.css'> 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="./js/mapa.js" ></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-dfbMbdm8iOCNDSSFJx7uHTUPlMvD10o&callback=initMap" async defer ></script>
+    -->
     <script src="./js/cargarDatos.js" type="module"></script>
     
 </head>
@@ -91,14 +92,17 @@
                 </section>
 
                 <fieldset class="opciones-restaurante">
-                <label for="restaurante">Elige un restaurante</label>
+                    <div id="restaurantes">
+
+                    </div>
+                <!--<label for="restaurante">Elige un restaurante</label>
                     <select name="restaurante" id="restaurante">
                         <option value="">Elige un restaurante</option>
                         <option value="res1">Alcorcón</option>
                         <option value="res2">Tribunal</option>
                         <option value="res3">Legazpi</option>
                         <option value="res4">Chamartín</option>
-                    </select>
+                    </select>-->
                     <span class="mensaje-error" id="mensaje-restaurante"></span>
                     <!--<div class="map-container" id="googleMap">
                     </div>-->

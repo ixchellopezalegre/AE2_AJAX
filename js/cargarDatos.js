@@ -9,17 +9,19 @@ let ingredientes;
 async function cargarDatos() {
 
     infoPizza = await util.enviarRequest("GET", "../server/pizzas.json");
-    ingredientes = await util.enviarRequest("GET", "../server/ingredientes.json")
+    ingredientes = await util.enviarRequest("GET", "../server/ingredientes.json");
+    restaurantes = await util.enviarRequest("GET", "../server/restaurantes.json");
 
     cargarIngredientes(ingredientes);
     cargarMasas(infoPizza.masas);
     cargarTamanios(infoPizza.tamanios);
+    cargarRestaurantes(restaurantes);
+    console.log(restaurantes);
 
     agregarEventListeners();
 }
 
-let formulario = document.getElementById("formulario")
-let parametros = "";
+let formulario = document.getElementById("formulario");
 
 let campos = formulario.elements
 console.log(campos);
@@ -125,6 +127,30 @@ const cargarTamanios = (listaTamanios) => {
 
 };
 
+const cargarRestaurantes = (listaRestaurantes) => {
+    const restauranteNode = document.getElementById("restaurantes");
+     util.limpiarNodo(restauranteNode, "div");
+
+     const select = document.createElement("select");
+     const option = document.createElement("option");
+     option.setAttribute("value","default");
+     let nombre = "Elige un restaurante";
+        option.textContent = nombre;
+     select.appendChild(option);
+     listaRestaurantes.forEach((restaurantes)=> {
+        //Creamos cada elemento p que va a contener un RB del tipo de masa
+ 
+        restauranteNode.appendChild(select);
+
+        let optionRes = document.createElement("option");
+        optionRes.setAttribute("value", restaurantes.id );
+        optionRes.textContent = restaurantes.nombre;
+        
+        select.appendChild(optionRes);
+    });
+
+};
+
 /*
  * CALCULAR EL PRECIO DE LA PIZZA
  */
@@ -214,9 +240,20 @@ const agregarEventListeners = () => {
     });
 
     //Validacion inmediata del restaurante
-    restaurante.addEventListener("change", validacion.validarRestaurante);
-    //valida cada vez que cambia la seleccion
+    //const restSelect = document.querySelector('#restaurantes input[type="option"]');
+    const opRest = document.querySelectorAll(
+        'option:not([value=""])' //descartamos la opcion por defecto
+    );
+    opRest.forEach((rest) =>{
+        rest.addEventListener("change", validacion.validarRestaurante);
+        rest.addEventListener("click", validacion.validarRestaurante)
+       });
+       console.log("he pasado por la validacion inmediata");
 
+
+
+    
+    
     //validacion inmediata de los terminos y condiciones
     const terminos = document.getElementById("terminos");
     terminos.onclick = validacion.validarTerminos;

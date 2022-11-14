@@ -1,4 +1,5 @@
 import { calcularPrecio } from "./cargarDatos.js";
+import  "./mapa.js";
 /**
  * VALIDACION FORMULARIO
  */
@@ -377,27 +378,36 @@ function validarMasa() {
 
   const mensaje = document.getElementById("mensaje-restaurante");
   let valido = false;
-  const opcionesRestaurante = restaurante.querySelectorAll(
-      'option:not([value=""])' //descartamos la opcion por defecto
+  const opcionesRestaurante = document.querySelectorAll(
+      'option' //descartamos la opcion por defecto
   );
+  
+    console.log("Estamos en validarRES y estas son las op ", opcionesRestaurante)
+  
+   
 
+  //let restId;
+  //restId = rest.getAttribute("value");
+  //console.log("El id: ",restId);
     for (const rest of opcionesRestaurante) {
-      if (rest.selected) {
-        valido = true;
-        break;
-      }
+        console.log("el valor del rest que hemos pasado" 
+        ,(rest.getAttribute("value")));
+        let valor = rest.getAttribute("value");
+        
+        if(rest.selected && (valor != "default")) {
+          valido = true;
+          break;
+        }
     }
-    
+  
+    opcionesRestaurante.forEach((rest) =>{
       if (!valido) {
-        restaurante.classList.add("invalido");
+        rest.classList.add("invalido");
         mensaje.textContent = "Elige el restaurante al que quieres pedir";
-
-      }else if (restaurante.classList.contains("invalido")){
-        restaurante.classList.remove("invalido");
+      }else if (rest.classList.contains("invalido")){
         mensaje.textContent = "";
-
       }
-    
+    });
     return valido;
 }
 

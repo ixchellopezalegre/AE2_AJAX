@@ -1,3 +1,5 @@
+
+
 let listaRestaurantes = []; //variable que contendra los restaurantes
 let infoWindow = null; //ventana de información que se abrirá al clickear sobre un restaurante
 
@@ -42,22 +44,39 @@ function myMapEx(myPosition){
       position: new google.maps.LatLng(lat, long),
       title: nombre,
     };
+
     let marker = new google.maps.Marker(markerOpt);
     marker.setMap(myMap);
     marker.addListener("click", restauranteClickHandler);
     }
-/*
-  var latitud = myPosition.coords.latitude;
-  var longitud = myPosition.coords.longitude;
-  var googlePos = new google.maps.LatLng(latitud, longitud);
-
-  var marker = new google.maps.Marker({
-    position: {lat: latitud, lng: longitud},
-    map: mapa,
-    title: 'Mi casa'
-  });
-  */
 }
+
+
+/**
+ * Funcion que muestra un restaurante en el mapa 
+ * cuando seleccionamos de la lista
+ */
+ function selectRestClickHandler(rest) {
+  console.log(rest);
+
+  const marker = new google.maps.Marker();
+  
+  
+  for (const restaurante of listaRestaurantes) {
+    const id = restaurante.id;
+    const lat = restaurante.lat;
+    const long = restaurante.long;
+    const nombre = restaurante.nombre;
+    
+    if (id === rest){
+      marker.latitude = lat;
+      marker.longitude = long;
+      marker.title = nombre;
+    }
+  }
+  console.log(marker.title);
+}
+
 
 
 /**
@@ -79,6 +98,7 @@ function myMapEx(myPosition){
   seleccionarRestaurante(marker.title);
 }
 
+
 /**
  * funcion que marca un restaurante como seleccionado
  * en el menu de seleccion
@@ -88,15 +108,16 @@ function myMapEx(myPosition){
   const restaurante = listaRestaurantes.filter(
     (rest) => rest.nombre === nombre
   )[0]; //filtramos por nombre y cogemos el primer elemento del array filtrado
-
   //buscamos el restaurante en documento y lo seleccionamos
   const nodoRestaurante = document
     .getElementById("restaurante")
     .querySelector(`option[value=${restaurante.id}]`);
   nodoRestaurante.selected = true;
   import("./validacion.js").then((mod) => mod.validarRestaurante());
-};
+}
 
+
+// console.log("Esta cogiendo el restaurante?", nodoRestaurante);
 
 
 /**
