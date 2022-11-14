@@ -57,7 +57,7 @@ function validarFormulario(event) {
       mensaje.textContent = 'Debes rellenar el nombre'
       setTimeout( function(){
         mensaje.textContent = ''
-    }, 3000)
+    }, 9000)
     return false;
 }
   //A través de test comparamos el input con el patrón (al cual se le han eliminado los espacios)
@@ -96,7 +96,7 @@ function validarApellidos() {
       mensaje.textContent = 'Debes rellenar el apellido'
       setTimeout( function(){
         mensaje.textContent = ''
-    }, 3000)
+    }, 9000)
     return (false);
     }
 
@@ -137,7 +137,7 @@ function validarApellidos() {
     mensaje.textContent = 'Debes rellenar la dirección'
     setTimeout( function(){
       mensaje.textContent = ''
-  }, 3000)
+  }, 9000)
   return false;
   }
 
@@ -183,7 +183,7 @@ function validarApellidos() {
     mensaje.textContent = 'Debes introducir un teléfono'
     setTimeout( function(){
       mensaje.textContent = ''
-  }, 3000)
+  }, 9000)
   return false;
   }
 
@@ -233,7 +233,7 @@ function validarApellidos() {
       mensaje.textContent = 'Debes introducir un email'
       setTimeout( function(){
         mensaje.textContent = ''
-    }, 3000)
+    }, 9000)
     return false;
     }
 

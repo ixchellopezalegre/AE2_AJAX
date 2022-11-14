@@ -47,14 +47,15 @@ form {
   text-align: left;
   padding-bottom: 0.05rem;
 }
-.contc-title{
-  font-size: 1.5rem;
 
-}
 .form-title{
   font-size: 40px;
-  font-style: italic;
   color: #faad06;;  
+}
+
+.contc-title{
+  font-size: 1.5rem;
+  font-style: italic;
 }
 
 .cajaSeccion{
@@ -65,7 +66,7 @@ form {
 }
 
 .datos-contacto{
-  text-align: center;
+  text-align: left;
 }
 input[type=Text],
   [type=email],
@@ -116,43 +117,79 @@ textarea{
 
   
   button {
-    display: inline-block;
-    text-decoration: none;
-    padding: 1rem 1.5rem;
-    color: purple;
+    font-size:18px;
+    font-weight: bold;
+    width: 100%;
+    background-color: #2524249f;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
     cursor: pointer;
-    border: 2px purple solid;
-    background: inherit;
   }
   
   button:hover,
   button:active {
-    color: white;
-    background-color: purple;
-  }
-  
-  .cta {
     font-weight: bold;
-    background: purple;
-    color: white;
-    border-color: purple;
-  }
-  
-  .cta:active,
-  .cta:hover {
-    background: white;
-    color: purple;
+    background-color: #ffb514;
+    color: #2524249f;
+    border-color: #2524249f;
   }
 
+
+  
   #info-precio {
-    color: purple;
-    border: 1px purple dashed;
-    padding: 1rem 1.5rem;
+    font-size:18px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    
+    width: 100%;
+    color: white;
     margin: 0;
-    display: none;
-  }
-  
-  #info-precio.visible {
-    display: unset;
+    border: none;
+    border-radius: 4px;
   }
 
+  #info-precio.visible {
+    text-align: center;
+    background-color: #2524249f;
+    color: white;
+    padding: 14px 20px;
+  }
+
+  .mensaje-error {
+    color: #d60303;
+    font-family: "Courier New", Courier, monospace;
+    /* font-family: 'Times New Roman', Times, serif; */
+    font-size: 0.8rem;
+    line-height: 0.8rem;
+    margin: 3px;
+  }
+  .invalido:not(option){
+    background: #f8aaaa;
+    border: 1px solid #d60303;
+    outline: 1px solid #d60303;
+  }
+
+  input.invalido {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: 1px solid #d60303;
+    border: 1px solid #d60303;
+    border-radius: 2px;
+    background-color: #f8aaaa;
+  }
+
+
+input[type="checkbox"].invalido {
+  width: 0.7rem;
+  height: 0.7rem;
+}
+
+input[type="radio"].invalido {
+  width: 10px;
+  height: 10px;
+  border-radius: 20px;
+}
