@@ -177,6 +177,18 @@ const agregarEventListeners = () => {
     //validacion inmediata de nombre
     nombre.onkeyup = validacion.validarNombre;
 
+     //validacion inmediata de apellidos
+    apellidos.onkeyup = validacion.validarApellidos;
+
+    //validacion inmediata de la direccion
+    direccion.onkeyup = validacion.validarDireccion;
+
+    //validacion inmediata del telefono
+    telefono.onkeyup = validacion.validarTlf;
+
+    //validacion inmediata del email
+    email.onkeyup = validacion.validarEmail;
+
     //validacion inmediata de los radio button tamanio
     //y actualizacion del precio
     const tamanioRB = document.getElementsByName("tamanios");
