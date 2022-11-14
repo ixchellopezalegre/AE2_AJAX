@@ -1,0 +1,28 @@
+#pedido {
+    margin-left: auto;
+    margin-right: auto;
+    width: 700px;
+    height: auto;
+}
+
+#chk_option_error {
+    visibility:hidden; 
+    color: red;
+}
+
+@media screen and (max-width: 750px) { 
+    #pedido {
+        margin-left: auto;
+        margin-right: auto;
+        width: 80%;
+        height: auto;
+    }
+}
+
+#Tabla {
+    border: 2px solid;
+    text-align: center;
+    background-color: lightgreen;
+    margin-left: auto;
+    margin-right: auto;
+}

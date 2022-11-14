@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AE4 AJAX</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- CSS style -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!--JavaScript-->
+    <script type="application/javascript" defer src="js/javascript.js"></script>
+    <!--<script type="text/javascript" defer src="js/validacion.js"></script>-->
+
+
+</head>
+<body>
+    <div id="pedido">
+        <form id="formulario">
+        <fieldset>
+            <legend>Datos cliente:</legend>
+            <div class="form-group">
+                <label for="nombre">Nombre:</label>
+                <input id="nombre" type="text" class="form-control">
+                <label for="direccion">Direccion:</label>
+                <input id="direccion" type="text" class="form-control">
+                <label for="telefono">Telefono:</label>
+                <input id="telefono" type="text" class="form-control">
+                <label for="email">Email:</label>
+                <input id="email" type="text" class="form-control">
+            </div>
+            </fieldset>
+            </form>
+        
+            <br>   
+
+           <div>
+                <button type="button" id="btnListarTamano" onclick="enviarPeticionAsincrona()">Lista de opciones y precios pizzas</button>
+                <table id="Tabla"></table>
+                <input type="button" onclick="checkValue()" value="Aceptar">
+
+                <br>
+                
+                <tr>
+                    <td><strong>PRECIO TOTAL:</strong></td>
+                        <td id="precioTotal"><div class="recalculate-text text-right text-underline">Total: <span id="precio">0</span></div></td>
+                </tr>
+            </div>
+
+            <br>
+
+            <div>
+                <button id="calc" type="submit" onclick="invoice()" class="btn btn-success btn-block">Procesar pedido</button> 
+            </div>
+
+            <br>
+
+            <div>
+                <button onClick="window.location.reload();" id="botonRefrescar" value="Refrescar" class="btn btn-outline-danger btn-block">Refrescar pedido</button> 
+            </div>
+       
+
+        <br>
+
+        <div id="listadoPizzas"></div>
+
+    </div>
+
+</body>
+</html>

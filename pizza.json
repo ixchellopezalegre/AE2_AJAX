@@ -1,0 +1,13 @@
+[
+  { "tipo": "Pequena", "precio": 5 },
+  { "tipo": "Mediana", "precio": 10 },
+  { "tipo": "Grande", "precio": 15 },
+  { "tipo": "Tomate", "precio": 1 },
+  { "tipo": "Queso", "precio": 1 },
+  { "tipo": "Jamon", "precio": 1 },
+  { "tipo": "Champiñones", "precio": 1 },
+  { "tipo": "Maiz", "precio": 1 },
+  { "tipo": "Peperoni", "precio": 1 },
+  { "tipo": "Piña", "precio": 1 },
+  { "tipo": "Atun", "precio": 1 }
+]
