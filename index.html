@@ -35,8 +35,8 @@
         <label class="form-title">Pedir una RicoPizza</label>
         <form id="formulario" action="#" method="posts">
             
-            <section>
-                <label for="datos-contacto">Datos de contacto</label>
+            <section class="cajaSeccion">
+                <label class="contc-title"for="datos-contacto">Datos de contacto</label>
                 <fieldset class="datos-contacto">
                     
                     <label for="nombre">Nombre: </label>
@@ -61,38 +61,41 @@
                 </fieldset>
             </section>
 
-            <section>
-                <label for="opciones-tamanio">Elige un RicoTamaño</label>
+            <section class="cajaSeccion">
+                <label class="contc-title" for="opciones-tamanio">Elige un RicoTamaño</label>
                 <fieldset class="opciones-tamanio">
                     <div id="tamanios">
                     </div>
                     <span class="mensaje-error" id="mensaje-tamanio"></span>
                 </fieldset>
-
-                <label for="opciones-masa">Elige la RicoMasa </label>
+            </section>
+            <section class="cajaSeccion">
+                <label class="contc-title" for="opciones-masa">Elige la RicoMasa </label>
                 <fieldset class="opciones-masa">
                     <div id="masas">
                     </div>
                     <span class="mensaje-error" id="mensaje-masa"></span>
                 </fieldset>
-
-                <label for="opciones-ingredientes">Elige los RicoIngredientes</label>
+            </section>
+            <section class="cajaSeccion">
+                <label class="contc-title" for="opciones-ingredientes">Elige los RicoIngredientes</label>
                 <fieldset class="opciones-ingredientes" >
                     <div id="ingredientes">
                     </div>   
                     <span class="mensaje-error" id="mensaje-ingredientes"></span>
                     
                 </fieldset>
+            </section>
 
                 <section>
                     <!-- Creamos el parrafo que mostrará el precio de la pizza según lo que seleccionemos -->
                     <h3>Aquí se mostrará el precio</h3>
                     <p id="info-precio" class="btn"></p>
                 </section>
-
+                <section class="cajaSeccion">
+                <label class="contc-title" for="opciones-restaurante">Elige el RicoRestaurante</label>
                 <fieldset class="opciones-restaurante">
                     <div id="restaurantes">
-
                     </div>
 
                     <span class="mensaje-error" id="mensaje-restaurante"></span>
@@ -100,9 +103,10 @@
                     </div>
 
                 </fieldset>
-
+                </section>
+                <section class="cajaSeccion">
                 <fieldset class="alergias-terminos">
-                    <label for="textArea">Introduce aquí información sobre alergias u otras notas adicionales:</label>
+                    <label for="textArea">Introduce aquí información sobre alergias u otras notas adicionales: </label>
                     <textarea id="textArea" cols="40" rows="4" placeholder="Escribe aquí:"></textarea>           
                     <div>
                         <input type="checkbox" name="terminos" id="terminos" value="true">
@@ -112,7 +116,7 @@
                 </fieldset>
             </section>
 
-            <section>
+            <section  class="cajaSeccion">
                 <fieldset class="acciones">                
                     <button type="submit" id="submit" name="submit" class="button">Enviar Pedido</button>
                     <button type="reset" id="reset" name="reset" class="button">Borrar Formulario</button>

@@ -33,14 +33,69 @@ nav a{
   padding-right: 20px;
 }
 
-form {
+.contendor-form{
+  text-align: center;
+  padding-top:80px ;
+  padding-left: 240px ;
+  padding-right: 240px;
+}
 
+form {
   font-size:  1rem;
   color: #fac34c;
   background-color:  #0000008c;
   text-align: left;
   padding-bottom: 0.05rem;
 }
+.contc-title{
+  font-size: 1.5rem;
+
+}
+.form-title{
+  font-size: 40px;
+  font-style: italic;
+  color: #faad06;;  
+}
+
+.cajaSeccion{
+  width: 95%;
+  margin: 1rem auto;
+  border: none;
+  padding: 1rem;
+}
+
+.datos-contacto{
+  text-align: center;
+}
+input[type=Text],
+  [type=email],
+  [type=tel], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display:block;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+fieldset {
+  padding: 1rem;
+}
+
+
+input[type="radio"],
+input[type="checkbox"],
+select,
+input + label {
+  cursor: pointer;
+}
+
+textarea{
+  width: 100%;
+}
+
+
 
 #acciones {
     display: flex;
