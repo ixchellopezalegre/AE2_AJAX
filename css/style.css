@@ -2,6 +2,19 @@
     display: flex;
     justify-content: space-evenly;
   }
+
+  #mapa {
+    height: 100%;
+  }
+
+
+  /* Tambien hacemos que el body y html se expandan */
+  html,
+  body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
   
   button {
     display: inline-block;
@@ -43,3 +56,4 @@
   #info-precio.visible {
     display: unset;
   }
+
