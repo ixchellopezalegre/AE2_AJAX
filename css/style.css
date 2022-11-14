@@ -1,3 +1,14 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 #acciones {
     display: flex;
     justify-content: space-evenly;
@@ -8,13 +19,6 @@
   }
 
 
-  /* Tambien hacemos que el body y html se expandan */
-  html,
-  body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-  }
   
   button {
     display: inline-block;

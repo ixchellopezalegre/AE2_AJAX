@@ -1,9 +1,9 @@
 
 
 let listaRestaurantes = []; //variable que contendra los restaurantes
-let infoWindow = null; //ventana de información que se abrirá al clickear sobre un restaurante
+let infoWindow = null; //ventana de información que se abrirá al clickar sobre un restaurante
 
-
+const array = [];
 
 
 
@@ -39,16 +39,22 @@ function myMapEx(myPosition){
     const lat = restaurante.lat;
     const long = restaurante.long;
     const nombre = restaurante.nombre;
+    
 
     const markerOpt = {
       position: new google.maps.LatLng(lat, long),
       title: nombre,
+     
     };
-
+    
     let marker = new google.maps.Marker(markerOpt);
     marker.setMap(myMap);
     marker.addListener("click", restauranteClickHandler);
-    }
+    array.push(marker);
+    console.log("array en myMapEx", array);
+   
+}
+
 }
 
 
@@ -57,24 +63,54 @@ function myMapEx(myPosition){
  * cuando seleccionamos de la lista
  */
  function selectRestClickHandler(rest) {
-  console.log(rest);
 
-  const marker = new google.maps.Marker();
+  let id;
+  let la;
+  let lo;
+  let nom;
+  let opciones;
   
-  
-  for (const restaurante of listaRestaurantes) {
-    const id = restaurante.id;
-    const lat = restaurante.lat;
-    const long = restaurante.long;
-    const nombre = restaurante.nombre;
-    
-    if (id === rest){
-      marker.latitude = lat;
-      marker.longitude = long;
-      marker.title = nombre;
+  for (const restF of listaRestaurantes) {
+
+    if (restF.id == rest.value){
+      id = restF.id;
+      la = restF.lat;
+      lo = restF.long;
+      nom = restF.nombre;
+       opciones = {
+        position: new google.maps.LatLng(la, lo),
+        title: nom,
+      }
     }
-  }
-  console.log(marker.title);
+  };
+
+  console.log(opciones.position);
+  console.log(opciones.title);
+
+  const marker = new google.maps.Marker(opciones);
+  console.log("Aqui el marker",marker);
+
+    array.forEach((marcador) =>{
+      let nomAn = marcador.title;
+      let nomUS = marker.title;
+
+      if ( nomAn === nomUS ){
+      console.log(marcador.title, "y", marker.title,"Son iguales")
+      
+      if (!infoWindow) {
+        // si no existe ya, se crea la infoWindow
+        infoWindow = new google.maps.InfoWindow();
+        infoWindow.open(marcador.map, marker);
+      }
+      // modificamos la infoWindow con los datos del marcador que ha desatado el evento
+      infoWindow.setContent(marcador.title);
+      infoWindow.setAnchor(marcador);
+
+
+      }
+
+    });
+    
 }
 
 
@@ -109,8 +145,9 @@ function myMapEx(myPosition){
     (rest) => rest.nombre === nombre
   )[0]; //filtramos por nombre y cogemos el primer elemento del array filtrado
   //buscamos el restaurante en documento y lo seleccionamos
+  console.log("PROBANDO",restaurante);
   const nodoRestaurante = document
-    .getElementById("restaurante")
+    .getElementById("restaurantes")
     .querySelector(`option[value=${restaurante.id}]`);
   nodoRestaurante.selected = true;
   import("./validacion.js").then((mod) => mod.validarRestaurante());

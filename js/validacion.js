@@ -382,19 +382,11 @@ function validarMasa() {
       'option' //descartamos la opcion por defecto
   );
   
-    console.log("Estamos en validarRES y estas son las op ", opcionesRestaurante)
-  
-   
-
-  //let restId;
-  //restId = rest.getAttribute("value");
-  //console.log("El id: ",restId);
     for (const rest of opcionesRestaurante) {
-        console.log("el valor del rest que hemos pasado" 
-        ,(rest.getAttribute("value")));
         let valor = rest.getAttribute("value");
         
         if(rest.selected && (valor != "default")) {
+          selectRestClickHandler(rest);
           valido = true;
           break;
         }
@@ -408,6 +400,7 @@ function validarMasa() {
         mensaje.textContent = "";
       }
     });
+
     return valido;
 }
 
