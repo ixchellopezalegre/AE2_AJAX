@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png" />
+    <title>Pizza Lista</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="appAJAX.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+    <h1>
+       <img src="images/logo.png" alt="logo" /> <!-- Cremos un header e incluimos el logo-->
+    </h1>
+
+<body>
+    <marquee>
+       
+            <font>
+                ¡Auténticas pizzas al horno de leña!
+            </font>
+        
+    </marquee>
+
+    <div class="container">
+
+        <!-- Creamos el contendor principal que contendrá todo nuestros elementos html-->
+        <nav>
+            <!-- Creamos un menu de navegación aunque en este caso no redirigen a ningún sitio-->
+            <a href="#">HOME</a>
+            <a href="#">MENU</a>
+            <a href="#">PIDE ONLINE</a>
+            <a href="#">CONTACTO</a>
+        </nav>
+
+        <main>
+            <!-- Creamos un main-->
+            <form action="URL" id="formulario" method="get">
+
+                <h2 id="titulo_form">Realiza tu pedido</h2>
+               
+                <fieldset id="bloque1">
+                    <legend id="legend1">Datos personales</legend>
+                    
+                    <label for="nombre">Nombre y apellidos:<input type="text" id="nombre" name="nombre"
+                            placeholder="Escriba su nombre"></label>
+                    <label for="direccion">Domicilio:<input type="text" id="direccion" name="direccion"
+                            placeholder="Introduzca su dirección"></label>
+                    <label for="telefono">Telefono:<input type="text" id="telefono" name="telefono"
+                            placeholder="Introduzca su telefono"></label>
+                    <label for="email">Email:<input type="text" id="email" name="email"
+                            placeholder="Introduzca su email"></label>
+                    <span id="span"></span>
+                </fieldset> <br>
+
+            
+                <fieldset id="bloque2">
+                    <!-- Creamos el segundo bloque para contener los botones tipo RADIO con DOM a partir de lista.JSON-->
+                    <legend id="legend2">Elige el tamaño de tu pizza</legend>
+                    <!--
+                    <ul>
+                        <input type="radio" name="btn_radio" value="5"><label>  Pequeña  5€   </label><br>
+                        <input type="radio" name="btn_radio" value="10"><label> Mediana 10€  </label><br>
+                        <input type="radio" name="btn_radio" value="15"><label> Grande  15€  </label><br>
+                    </ul> -->
+
+                </fieldset><br>
+               
+                <fieldset id="bloque3">
+                    <!-- Creamos el tercer bloque para contener los botones tipo CHECKBOX con DOM a partir de lista.JSON-->
+                    <legend id="legend3">Elige los ingredientes</legend>
+                    <!--
+                    <ul>
+                        <input type="checkbox" name="btn_check" value="1"><label> Extra Queso  1€  </label><br>
+                        <input type="checkbox" name="btn_check" value="1"><label> Jamón York   1€  </label><br>
+                        <input type="checkbox" name="btn_check" value="1"><label> Maiz         1€  </label><br>
+                        <input type="checkbox" name="btn_check" value="1"><label> Cebolla      1€  </label><br>
+                    </ul>-->
+
+                </fieldset>
+
+                <input type="button" id="btn_refrescar" value="Refresh" class="boton"/>
+                <input type="button" id="btn_precio" value="Ver precio" class="boton"><br><br>
+                <div id="span_precio"><span></span></div>
+                <input type="reset" value="Borrar datos" class="boton" />
+                <input type="submit" id="submit" value="Enviar pedido" class="boton" />
+               
+            </form>
+        </main>
+        <footer>
+            <p class="footer_text">
+                Pizza Loca S.L. - C/ PipiLängstrump S/N, Las Rozas de Madrid -
+                Copyright 2020 ©
+            </p>
+        </footer>
+    </div>
+</body>
+
+</html>

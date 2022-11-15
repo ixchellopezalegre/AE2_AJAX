@@ -1,0 +1,37 @@
+
+{
+    "PIZZA": {
+        "TAMAÑO": [
+            {
+                "NOMBRE": "Pequeña",
+                "VALOR": 5
+            },
+            {
+                "NOMBRE": "Mediana",
+                "VALOR": 10
+            },
+            {
+                "NOMBRE": "Grande",
+                "VALOR": 10
+            }
+        ],
+        "INGREDIENTES": [
+            {
+                "INGREDIENTE": "Extra Queso  ",
+                "VALOR": 1
+            },
+            {
+                "INGREDIENTE": "Jamón York ",
+                "VALOR": 1
+            },
+            {
+                "INGREDIENTE": "maiz   ",
+                "VALOR": 1
+            },
+            {
+                "INGREDIENTE": "Cebolla    ",
+                "VALOR": 1
+            }
+        ]
+    }
+}
