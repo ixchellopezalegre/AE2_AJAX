@@ -7,13 +7,19 @@ let infoPizza;
 let ingredientes;
 let restaurantes;
 
+/**
+ * Funcion que obtiene los datos del servidor
+ * y carga los elementos relevantes de la pagina.
+ */
 async function cargarDatos() {
     console.log("Cargando los datos del servidor");
+    //obtenemos los datos del servidor
 
     infoPizza = await util.enviarRequest("GET", "../server/pizzas.json");
     ingredientes = await util.enviarRequest("GET", "../server/ingredientes.json");
     restaurantes = await util.enviarRequest("GET", "../server/restaurantes.json");
-
+    
+    // llamamos a las funciones que cargaran los nodos html
     cargarIngredientes(ingredientes);
     cargarMasas(infoPizza.masas);
     cargarTamanios(infoPizza.tamanios);
@@ -30,17 +36,10 @@ console.log(campos);
 
 
 const cargarIngredientes = (listaIngredientes) => {
+
     //Con esto eliminamos la lista de ingredientes existentes
     const ingredientesNode = document.getElementById("ingredientes");
     util.limpiarNodo(ingredientesNode, "p");
-    
-    /*const precioNode = document.getElementById("info");
-    util.limpiarNodo(precioNode, "p");
-    const pInfo = document.createElement("p");
-    precioNode.appendChild(pInfo);
-    pInfo.setAttribute("id", "info-precio");
-    pInfo.setAttribute("class", "btn");
-    */
 
     //Recorremos la lista de ingredientes, generando los elementos 
     //en la seccion de ingrecientes del HTML
@@ -153,8 +152,6 @@ const cargarRestaurantes = (listaRestaurantes) => {
         option.textContent = nombre;
      select.appendChild(option);
      listaRestaurantes.forEach((restaurantes)=> {
-        //Creamos cada elemento p que va a contener un RB del tipo de masa
- 
         restauranteNode.appendChild(select);
 
         let optionRes = document.createElement("option");
@@ -166,8 +163,12 @@ const cargarRestaurantes = (listaRestaurantes) => {
     console.log("Restaurantes cargados");
 };
 
-
+/**
+ * Funcion que limpia el notod del botón que contiene
+ *  la informacion sobre el precio de la pizza.
+ */
 function cargarInfo (){
+
     console.log("Limpiando información del precio");
     const precioNode = document.getElementById("info");
     util.limpiarNodo(precioNode, "p");
@@ -181,6 +182,7 @@ function cargarInfo (){
 /*
  * CALCULAR EL PRECIO DE LA PIZZA
  */
+
 /**
  * Funcion que calcula el precio de la pizza 
  * segun la cantidad de ingredientes y el tamanio elegidos
@@ -198,7 +200,6 @@ export function calcularPrecio(){
             //buscamos el tamanio con un nombre igual al que tenemos 
             (tam) => tam.nombre === tamanioElegido.value
         ).precio;
-        
     
     //Calculamos el precio de los ingredientes
     const ingredientesElegidos = document.querySelectorAll(
@@ -228,22 +229,22 @@ const agregarEventListeners = () => {
     //Asignamos los eventListeners
     submit.onclick = validacion.validarFormulario;
 
-    //validacion inmediata de nombre
+    //Validacion inmediata de nombre
     nombre.onkeyup = validacion.validarNombre;
 
-     //validacion inmediata de apellidos
+     //Validacion inmediata de apellidos
     apellidos.onkeyup = validacion.validarApellidos;
 
-    //validacion inmediata de la direccion
+    //Validacion inmediata de la direccion
     direccion.onkeyup = validacion.validarDireccion;
 
-    //validacion inmediata del telefono
+    //Validacion inmediata del telefono
     telefono.onkeyup = validacion.validarTlf;
 
-    //validacion inmediata del email
+    //Validacion inmediata del email
     email.onkeyup = validacion.validarEmail;
 
-    //validacion inmediata de los radio button tamanio
+    //Validacion inmediata de los radio button tamanio
     //y actualizacion del precio
     const tamanioRB = document.getElementsByName("tamanios");
     for (var i = 0; i < tamanioRB.length; i++) {
@@ -251,13 +252,13 @@ const agregarEventListeners = () => {
         tamanioRB[i].addEventListener("click", validacion.validarTamanio);
     }
 
-    //validacion inmediata de los radio button MASA
+    //Validacion inmediata de los radio button MASA
     const masaRB = document.getElementsByName("masas");
     for (var i = 0; i < masaRB.length; i++) {
         masaRB[i].addEventListener("click", validacion.validarMasa);
     }
 
-    // validacion inmediata del minimo de ingredientes
+    // Validacion inmediata del minimo de ingredientes
     //y actualizacion del precio
     const ingrCB = document.querySelectorAll(
         '#ingredientes input[type="checkbox"]'
@@ -269,17 +270,14 @@ const agregarEventListeners = () => {
 
     //Validacion inmediata del restaurante
     restaurante.addEventListener("change", validacion.validarRestaurante) ;
-   
     
     //validacion inmediata de los terminos y condiciones
-    
     const terminos = document.getElementById("terminos");
-
     terminos.addEventListener("click", validacion.validarTerminos);
 
+    //reseteo de todo el documento.
     const reset = document.getElementById("reset");
     reset.addEventListener("click", cargarInfo);
-
 
      //recarga de la pagina a partir del boton de refrescar
     const refrescar = document.getElementById("refresh");
