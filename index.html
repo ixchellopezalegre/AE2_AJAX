@@ -32,11 +32,11 @@
 
     <section class="contendor-form">
 
-        <label class="form-title">Pedir una RicoPizza</label>
+        <label class="form-title">Tu RicoPedido</label>
         <form id="formulario" action="#" method="posts">
             
             <section class="cajaSeccion">
-                <label class="contc-title"for="datos-contacto">Datos de contacto</label>
+                <label class="sub-title"for="datos-contacto">Datos de contacto</label>
                 <fieldset class="datos-contacto">
                     
                     <label for="nombre">Nombre: </label>
@@ -62,40 +62,54 @@
             </section>
 
             <section class="cajaSeccion">
-                <label class="contc-title" for="opciones-tamanio">Elige un RicoTamaño</label>
-                <fieldset class="opciones-tamanio">
-                    <div id="tamanios">
-                    </div>
+                <label class="sub-title" for="opciones-pizza">¿Cómo quieres tu Rico Pizza?</label>
+                <fieldset class = opciones-pizza>
+          
+                       
+                <div id="fila">
+                    <div id="columna">
+                    <label class="col-title" for="opciones-tamanio">Elige un RicoTamaño</label>
+                    <section class="opciones-tamanio">
+                        <div id="tamanios">
+                        </div>
+                    </section>
                     <span class="mensaje-error" id="mensaje-tamanio"></span>
-                </fieldset>
-            </section>
-            <section class="cajaSeccion">
-                <label class="contc-title" for="opciones-masa">Elige la RicoMasa </label>
-                <fieldset class="opciones-masa">
-                    <div id="masas">
-                    </div>
+                     </div>
+            
+                    <div id="columna">
+                    <label class="col-title" for="opciones-masa">Elige la RicoMasa </label>
+                    <section class="opciones-masa">
+                        <div id="masas">
+                        </div>
+                    </section>
                     <span class="mensaje-error" id="mensaje-masa"></span>
-                    
-                </fieldset>
-            </section>
-            <section class="cajaSeccion">
-                <label class="contc-title" for="opciones-ingredientes">Elige los RicoIngredientes</label>
-                <fieldset class="opciones-ingredientes" >
-                    <div id="ingredientes">
-                    </div>   
-                    <span class="mensaje-error" id="mensaje-ingredientes"></span>
-                    
-                </fieldset>
+                    </div>
+                </div>
+
+                <div id="fila">
+                    <div id="columna">
+                        <label class="col-title" for="opciones-ingredientes">Elige los RicoIngredientes</label>
+                        <section class="opciones-ingredientes" >
+                            <div id="ingredientes">
+                            </div>                       
+                        </section>                        
+                        <span class="mensaje-error" id="mensaje-ingredientes"></span>
+                    </div>
+                    <div id="columna" class="columna-img">
+                        <div id="linea">
+                        <img alt="pizza" src="images/pizza2.jpg" width="200">
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
             </section>
 
-            <section class="cajaSeccion">
-                <div id="info">
-                <!-- Creamos el parrafo que mostrará el precio de la pizza según lo que seleccionemos -->
+            
+                <div class="cajaSeccion" id="info">
             </div>
-            </section>
 
             <section class="cajaSeccion">
-                <label class="contc-title" for="opciones-restaurante">Elige el RicoRestaurante</label>
+                <label class="sub-title" for="opciones-restaurante">Elige tu RicoRestaurante más cercano</label>
                 <fieldset class="opciones-restaurante">
                     <div id="restaurantes">
                     </div>

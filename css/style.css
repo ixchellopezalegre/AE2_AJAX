@@ -52,17 +52,55 @@ form {
   color: #faad06;;  
 }
 
-.contc-title{
+.sub-title{
   font-size: 1.5rem;
   font-style: italic;
 }
+
+.col-title{
+  font-size: 1rem;
+  font-style:oblique;
+}
+
+.alergias-terminos{
+  font-size: 15px;
+}
+
+.opciones-tamanios {
+  flex-direction: row;
+  width: 100%;
+  align-items: flex-start;
+}
+
 
 .cajaSeccion{
   width: 95%;
   margin: 1rem auto;
   border: none;
-  padding: 1rem;
+  padding: 0.5rem;
 }
+
+#fila {
+  display: flex;
+  flex-wrap: wrap;
+}
+#columna{
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  padding: 1rem;
+  
+}
+.columna-img{
+  justify-content: center
+  
+}
+
+#linea{
+  display: flex;
+  justify-content: center;
+}
+
 
 .datos-contacto{
   text-align: left;
