@@ -1,27 +1,35 @@
-
-
 let listaRestaurantes = []; //variable que contendra los restaurantes
 let infoWindow = null; //ventana de información que se abrirá al clickar sobre un restaurante
 
+//Declaramos un array vacío que llenaremos con los marcadores cargados en myMapEx
 const array = [];
 
 
-
+/**
+ * Funcion que carga la lista de restaurantes y
+ * desata la carga del mapa
+ */
 function initMap() {
   import("./util.js").then((mod) => {
+    //obtenemos la lista de restaurantes
     return mod.enviarRequest("GET", "./server/restaurantes.json");
   })
  .then((restaurantes)=> {
   listaRestaurantes = restaurantes;
+  //cargamos el mapa centrado en la posicion del usuario
   navigator.geolocation.getCurrentPosition(myMapEx);
  
  });
 }
 
+
+/**
+ * Funcion que carga el mapa con los restaurantes,
+ * centrado en la posicion dada
+ * @param {} myPosition
+ */
 function myMapEx(myPosition){
   const coords = myPosition.coords;
-
-
   const myMapProperties = {
       center: new google.maps.LatLng(coords.latitude, coords.longitude),
       zoom: 10,
@@ -49,28 +57,31 @@ function myMapEx(myPosition){
     let marker = new google.maps.Marker(markerOpt);
     marker.setMap(myMap);
     marker.addListener("click", restauranteClickHandler);
+
+    //añadimos al array para que pueda ser utilizado por todo el script
     array.push(marker);
    
-}
-
+  }
 }
 
 
 /**
  * Funcion que muestra un restaurante en el mapa 
- * cuando seleccionamos de la lista
+ * cuando seleccionamos de la lista.
  */
  function selectRestClickHandler(rest) {
   console.log("ESTOY EN SELECTRESTCLICK" );
-
+  //Declaramos unas variables para el marcador correspondiente a
+  //la opción seleccionada en el SELECT.
   let id;
   let la;
   let lo;
   let nom;
   let opciones;
-  
-  for (const restF of listaRestaurantes) {
 
+  // recorremos la listaRestaurantes y 
+  //buscamos el restaurante seleccionado
+  for (const restF of listaRestaurantes) {
     if (restF.id == rest.value){
       id = restF.id;
       la = restF.lat;
@@ -83,17 +94,15 @@ function myMapEx(myPosition){
     }
   };
 
-
-
+  //Creamos un marcador auxiliar con las coordinadas
+  //del restaurante encontrado para compararlo con los otros
   const marker = new google.maps.Marker(opciones);
-
     array.forEach((marcador) =>{
+      //VAmos a compararlo por la propiedad .title del Marker.
       let nomAn = marcador.title;
       let nomUS = marker.title;
 
       if ( nomAn === nomUS ){
-  
-      
       if (!infoWindow) {
         // si no existe ya, se crea la infoWindow
         infoWindow = new google.maps.InfoWindow();
@@ -103,13 +112,9 @@ function myMapEx(myPosition){
       infoWindow.setContent(marcador.title);
       infoWindow.setAnchor(marcador);
 
-
       }
-
-    });
-    
+    }); 
 }
-
 
 
 /**
@@ -149,9 +154,6 @@ function myMapEx(myPosition){
   nodoRestaurante.selected = true;
   import("./validacion.js").then((mod) => mod.validarRestaurante());
 }
-
-
-// console.log("Esta cogiendo el restaurante?", nodoRestaurante);
 
 
 /**

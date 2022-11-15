@@ -1,5 +1,6 @@
 import { calcularPrecio } from "./cargarDatos.js";
 import  "./mapa.js";
+
 /**
  * VALIDACION FORMULARIO
  */
@@ -34,6 +35,7 @@ function validarFormulario(event) {
 /*
  *============= Validacion nombre =============
  */
+
 /**
  * Funcion que verifica que el nombre tiene un formato válido además de eliminar espacios innecesarios
  * @returns true si el nombre es válido, false si no
@@ -47,19 +49,18 @@ function validarFormulario(event) {
   const nombreUsuario = nombre.value.replace(/\s/g, "");
 
   // La expresión regular usada tanto en validarNombre() como en validarApellidos() incluye acentos y también la ñ
-  //También se asegura de que la primera letra del nombre y apellido sea una mayúscula
   //Del mismo modo se asegura de que el input no se componga solo de espacios en blanco
   const pattern =
     /(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/;
 
-
-    if (nombre.value == "" || (nombre.value.trim())== "") {
-      mensaje.textContent = 'Debes rellenar el nombre'
-      setTimeout( function(){
-        mensaje.textContent = ''
-    }, 9000)
-    return false;
-}
+  //Si el input solo contiene espacios en blanco lanzaremos un mensaje de error con timeout.
+  if (nombre.value == "" || (nombre.value.trim())== "") {
+    mensaje.textContent = 'Debes rellenar el nombre'
+    setTimeout( function(){
+      mensaje.textContent = ''
+  }, 9000)
+  return false;
+  }
   //A través de test comparamos el input con el patrón (al cual se le han eliminado los espacios)
   const valido = pattern.test(nombreUsuario);
 
@@ -75,6 +76,7 @@ function validarFormulario(event) {
   return valido;
 }
 
+
 /*
  *============= Validacion apellidos =============
  */
@@ -82,7 +84,6 @@ function validarFormulario(event) {
 /**
  * Funcion que verifica que los apellidos tienen un formato válido además de eliminar espacios innecesarios
  * @returns true si el apellido es válido, false si no
->>>>>>> Stashed changes
  */
 
 function validarApellidos() {
@@ -111,9 +112,11 @@ function validarApellidos() {
     return valido;
 }
 
+
 /*
  *============= Validacion direccion =============
  */
+
 /**
  * Funcion que verifica que la direccion cumple los siguientes requisitos:
  *    - El campo contiene caracteres (no está relleno únicamente de espacios)
@@ -124,7 +127,7 @@ function validarApellidos() {
  */
 
  function validarDireccion() {
-  //Seleccionamos el primer nodo hijo que deriva del nodo <p></p> cuya clase es "mensaje-error direccion-error"
+  //Seleccionamos el elemento mensaje con el id adecuado
   const mensaje = document.getElementById("mensaje-direccion");
   let valido = false;
   const pattern = /^[A-Z]{1,}[0-9]{1,}/;
@@ -133,6 +136,7 @@ function validarApellidos() {
   let direccionUsuario = (direccion.value.trim())
   .replace(/ {2,}/g, " ");
 
+  //Si el input solo contiene espacios en blanco lanzaremos un mensaje de error con timeout.
   if (direccion.value == "" || (direccion.value.trim())== "") {
     mensaje.textContent = 'Debes rellenar la dirección'
     setTimeout( function(){
@@ -159,9 +163,9 @@ function validarApellidos() {
       mensaje.textContent = "";
     }
   }
-
   return valido;
 }
+
 
 /*
  *============= Validacion telefono =============
@@ -177,8 +181,7 @@ function validarApellidos() {
   let tfnUsuario = telefono.value.replace(/\s/g, ""); //elimina todos los espacios del input
   const pattern = /^[0-9]{9}$/;
 
-  // si estamos validando al teclear, modificamos el patron
-  // para ajustarse a la longitud del input del usuario 
+  //Si el input solo contiene espacios en blanco lanzaremos un mensaje de error con timeout.
   if (telefono.value == "" || (telefono.value.trim())== "") {
     mensaje.textContent = 'Debes introducir un teléfono'
     setTimeout( function(){
@@ -205,6 +208,7 @@ function validarApellidos() {
 /*
  *============= Validacion email =============
  */
+
 /**
  * Funcion que verifica que el email cumple los siguientes requisitos:
  *    + Elimina cualquier espacio introducido.
@@ -214,7 +218,6 @@ function validarApellidos() {
  *    + La "@" y el punto no puden estar inmediatamente juntos.
  * @returns true si el email es válido, false si no
  */
-
  function validarEmail() {
  
   const mensaje = document.getElementById("mensaje-email");
@@ -229,6 +232,7 @@ function validarApellidos() {
   //En primer lugar, eliminamos cualquier espacio introducido
   let emailUsuario = email.value.replace(/\s/g, "");
 
+    //Si el input solo contiene espacios en blanco lanzaremos un mensaje de error con timeout.
     if (email.value == "" || (email.value.trim())== "") {
       mensaje.textContent = 'Debes introducir un email'
       setTimeout( function(){
@@ -256,14 +260,13 @@ function validarApellidos() {
 
 /*
 
- *============= Validacion Radio buttons: tipos de masa y tamanio =============
+ *============= Validacion Radio buttons: tamanio y tipos de masa=============
  */
 
  /**
  * Funcion que verifica que se ha seleccionado únicamente un tipo de masa.
  * @returns true si se han aceptado, false si no
  */
-
 function validarMasa() {
     let valido = false;
     const mensaje= document.getElementById("mensaje-masa");
@@ -325,14 +328,16 @@ function validarMasa() {
   
     return valido;
   }
+
+
 /*
  *============= Validacion minimo ingredientes =============
  */
+
 /**
  * Funcion que valida que hay al menos un ingrediente seleccionado
  * @returns true si al menos un ingrediente ha sido seleccionado, false si no
  */
-
  function validarMinIngredientes() {
     let valido = false;
     const mensaje = document.getElementById('mensaje-ingredientes')
@@ -377,18 +382,16 @@ function validarMasa() {
 
   const mensaje = document.getElementById("mensaje-restaurante");
   let valido = false;
-  const opcionesRestaurante = document.querySelectorAll(
-      'option' //descartamos la opcion por defecto
-  );
-  console.log("VALIDANDO");
-  
+  const opcionesRestaurante = document.querySelectorAll('option');
     
-  
     for (const rest of opcionesRestaurante) {
         let valor = rest.getAttribute("value");
         
         if(rest.selected && (valor != "default")) {
           console.log(valor);
+
+          //Aquí llamamos a la función de mapa.js que se encargara de 
+          //seleccionar el marcador en el mapa del restaurante elegido.
           selectRestClickHandler(rest);
           valido = true;
           break;
@@ -407,6 +410,7 @@ function validarMasa() {
     return valido;
 }
 
+
 /*
  * ============= Validacion terminos =============
  */
@@ -418,25 +422,15 @@ function validarMasa() {
 function validarTerminos() {
   const mensaje = document.getElementById("mensaje-terminos");
   let terminosCbx = document.getElementById("terminos");
-  console.log("  A VER ");
-  console.log(terminosCbx);
 
   let valido = false;
+  valido = terminosCbx.checked;
+    if(!valido) terminosCbx.classList.add("invalido");
+    else if (terminosCbx.classList.contains("invalido"))
+    terminosCbx.classList.remove("invalido");
 
-   valido = terminosCbx.checked;
-   if(!valido) terminosCbx.classList.add("invalido");
-   else if (terminosCbx.classList.contains("invalido"))
-   terminosCbx.classList.remove("invalido");
-
-   console.log("  clase ");
-   console.log(terminosCbx.classList);
-   console.log("  A VER ");
-  console.log(valido);
-
-  if(valido) mensaje.textContent = "";
-  else mensaje.textContent = "Elige al menos un ingrediente para tu pizza";
-  console.log("  A VER EL MENSAJE ");
-  console.log(mensaje.textContent);
+    if(valido) mensaje.textContent = "";
+    else mensaje.textContent = "Debes aceptar los términos y condiciones";
 
   return valido;
   }
@@ -453,5 +447,4 @@ function validarTerminos() {
     validarMinIngredientes,
     validarRestaurante,
     validarTerminos
-    
   };

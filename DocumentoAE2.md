@@ -1,11 +1,16 @@
-# AE-2. AJAX
-*Andrea Adelaila*
+# **AE-2. AJAX**
+Componentes del grupo:  
 
-*David López*
+- *Andrea Adelaila*  
 
-*Ixchel López*
+- *David López*  
+
+- *Ixchel López*  
+
 
 ## Estructura general
+----------
+
 Primero de todo, hemos tenido en cuenta la nota que nos diste en la Actividad 1 y hemos intentado simplificar el nombre de las variables. 
 También hemos echado mano del ejercicio que compartiste a la hora de la validación y algunos mensajes de texto de error tienen un time-out para probar dicha funcionalidad y también hemos simplificado la validación de los campos `nombre` y `apellidos` como nos indicaste.
 
@@ -32,20 +37,16 @@ La simulación del servidor se ha hecho con archivos en formato .json almacenado
 - **ingredientes.json**: contiene un array de objetos, cada uno de los cuales representa un ingrediente con una propiedad “nombre” y otra propiedad “precio”.
 
 - **pizzas.json**: contiene un objeto con dos propiedades “tamanios” y “masas” (ya que nuestro formulario incluye opciones para los distintos tipos de masa). Cada propiedad contiene un array con las opciones. El array de tamaños lo forman objetos con las propiedades “nombre” y “precio”.
-
-![pantallazo-pizzas.json](images\captura3.png)
+    ![pantallazo-pizzas.json](images\captura3.png)
 
 
 - **restaurantes.json**: contiene un array de objetos, cada uno de los cuales representa un restaurante con cuatro propiedades, dos sus coordenadas ("lat" y "long"), una su "nombre" y otra propiedad para su "ID". A través de este array obtendremos los restaurantes para el select y también las coordenadas para el mapa.  
 
-----------  
 
 
+## **Requerimiento 1**  
 
-
-
-
-## **Requerimiento 1**
+----------
 
 Estas son las partes del formulario que se cargan dinámicamente:
 
@@ -164,6 +165,8 @@ Se ha creado un botón adicional en el archivo index.html con un event listener 
 ![pantallazo-cargaHTMLdinámica](images\captura16.png)
 ![pantallazo-cargaHTMLdinámica](images\captura17.png)
 
+----------  
+
 
 
 ## **Requerimiento 2**
@@ -216,14 +219,55 @@ En la aplicación mostramos el resultado de esta función a través de dos modos
 
     ![pantallazo-cargaHTMLdinámica](images\captura24.png)
 
-Por último, la función cargarInfo() también será llamada por el botón "Borrar formulario":
+Por último, la función cargarInfo() también será llamada por el botón **"Borrar formulario"**:
 
   ![pantallazo-cargaHTMLdinámica](images\captura26.png)
 
-Hacemos esto para limpiar el nodo del botón ya que no se hace automáticamente como el resto del formulario con el botón "reset.
+Hacemos esto para limpiar el nodo del botón ya que no se hace automáticamente como el resto del formulario con la función "reset".  
+
+----------  
 
 ## ANEXO
 ### **Mapa.js**
+
+Como hemos explicado antes, queríamos probar con la introducción de un mapa JS google. El archivo mapa.js está comentadoo y sus funciones documentadas y no queremos hacer el archivo más extenso asi que solo destacaremos los efectos en la aplicación.
+
+Se ha seguido las indicaciones del apartado **Geolocalización** de tu **WSJavaScript**. Hemos realizado la creación de una clave API en una de nuestras cuentas de google y la hemos enlazado en el HTML en un script:
+
+ ![pantallazo-cargaHTMLdinámica](images\captura35.png)
+
+**La clave API enlazada en el HTML**
+
+Cuando iniciamos la aplicación nos pide permiso para obtener nuestra ubicación y centrar el mapa acorde a tus coordenadas:
+
+ ![pantallazo-cargaHTMLdinámica](images\captura30.png)
+
+Puedes seleccionar un restaurante de dos modos en nuestra aplicación:
+1. A través de hacer click en uno de los marcadores:  
+      
+      ![pantallazo-cargaHTMLdinámica](images\captura31.png)  
+
+      *Asi se muestra el mapa al cargar la página*  
+
+     ![pantallazo-cargaHTMLdinámica](images\captura32.png)  
+
+      *La opción del select queda marcada al hacer click en un marcador del mapa*  
+
+2. A través de seleccionar una opción del select: 
+
+     ![pantallazo-cargaHTMLdinámica](images\captura33.png)  
+
+     *El desplegable cargado dinámicamente con cargarDatos()*  
+
+     ![pantallazo-cargaHTMLdinámica](images\captura34.png) 
+
+      *El marcador del mapa se selecciona automáticamente al elegir una opcion del SELECT* 
+
+Ambos se validan a través de *validarRestaurante()*.
+
+
+
+
 
 
 

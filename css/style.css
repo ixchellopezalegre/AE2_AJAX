@@ -72,7 +72,6 @@ form {
   align-items: flex-start;
 }
 
-
 .cajaSeccion{
   width: 95%;
   margin: 1rem auto;
@@ -84,13 +83,14 @@ form {
   display: flex;
   flex-wrap: wrap;
 }
+
 #columna{
   display: flex;
   flex-direction: column;
   width: 50%;
   padding: 1rem;
-  
 }
+
 .columna-img{
   justify-content: center
   
@@ -101,26 +101,25 @@ form {
   justify-content: center;
 }
 
-
 .datos-contacto{
   text-align: left;
 }
+
 input[type=Text],
-  [type=email],
-  [type=tel], select {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display:block;
-    border: 1px solid #cccccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-  }
+[type=email],
+[type=tel], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display:block;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
 
 fieldset {
   padding: 1rem;
 }
-
 
 input[type="radio"],
 input[type="checkbox"],
@@ -132,96 +131,89 @@ input + label {
 textarea{
   width: 100%;
 }
+
 #ingredientes p, #masas p, #tamanios p {
   margin: 0.5rem;
 }
 
+.cajaMapa{
+  position:fixed; 
+  top:0;
+}
 
+.map-container{
+  height: 100%;
+  width:100%;
+  margin: 0;
+  padding: 0;
+}
 
-  .cajaMapa{
-    position:fixed; 
-    top:0;
-  }
+#mapa {
+  height: 300px;
+}
 
-  .map-container{
-    height: 100%;
-    width:100%;
-    margin: 0;
-    padding: 0;
-  }
+button {
+  font-size:18px;
+  font-weight: bold;
+  width: 100%;
+  background-color: #2524249f;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
 
-  #mapa {
-    height: 300px;
-  }
+button:hover,
+button:active {
+  font-weight: bold;
+  background-color: #ffb514;
+  color: #2524249f;
+  border-color: #2524249f;
+}
 
-
+#info-precio {
+  font-size:18px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
   
-  button {
-    font-size:18px;
-    font-weight: bold;
-    width: 100%;
-    background-color: #2524249f;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  button:hover,
-  button:active {
-    font-weight: bold;
-    background-color: #ffb514;
-    color: #2524249f;
-    border-color: #2524249f;
-  }
+  width: 100%;
+  color: white;
+  margin: 0;
+  border: none;
+  border-radius: 4px;
+}
 
+#info-precio.visible {
+  text-align: center;
+  background-color: #2524249f;
+  color: white;
+  padding: 14px 20px;
+}
 
-  
-  #info-precio {
-    font-size:18px;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: bold;
-    
-    width: 100%;
-    color: white;
-    margin: 0;
-    border: none;
-    border-radius: 4px;
-  }
+.mensaje-error {
+  color: #d60303;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.8rem;
+  line-height: 0.8rem;
+  margin: 3px;
+}
+.invalido:not(option){
+  background: #f8aaaa;
+  border: 1px solid #d60303;
+  outline: 1px solid #d60303;
+}
 
-  #info-precio.visible {
-    text-align: center;
-    background-color: #2524249f;
-    color: white;
-    padding: 14px 20px;
-  }
-
-  .mensaje-error {
-    color: #d60303;
-    font-family: "Courier New", Courier, monospace;
-    /* font-family: 'Times New Roman', Times, serif; */
-    font-size: 0.8rem;
-    line-height: 0.8rem;
-    margin: 3px;
-  }
-  .invalido:not(option){
-    background: #f8aaaa;
-    border: 1px solid #d60303;
-    outline: 1px solid #d60303;
-  }
-
-  input.invalido {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    outline: 1px solid #d60303;
-    border: 1px solid #d60303;
-    border-radius: 2px;
-    background-color: #f8aaaa;
-  }
-
+input.invalido {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: 1px solid #d60303;
+  border: 1px solid #d60303;
+  border-radius: 2px;
+  background-color: #f8aaaa;
+}
 
 input[type="checkbox"].invalido {
   width: 0.7rem;
