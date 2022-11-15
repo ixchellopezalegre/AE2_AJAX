@@ -5,8 +5,10 @@ window.onload = cargarDatos;
 
 let infoPizza;
 let ingredientes;
+let restaurantes;
 
 async function cargarDatos() {
+    console.log("Cargando los datos del servidor");
 
     infoPizza = await util.enviarRequest("GET", "../server/pizzas.json");
     ingredientes = await util.enviarRequest("GET", "../server/ingredientes.json");
@@ -16,7 +18,7 @@ async function cargarDatos() {
     cargarMasas(infoPizza.masas);
     cargarTamanios(infoPizza.tamanios);
     cargarRestaurantes(restaurantes);
-    console.log(restaurantes);
+    cargarInfo();
 
     agregarEventListeners();
 }
@@ -26,10 +28,19 @@ let formulario = document.getElementById("formulario");
 let campos = formulario.elements
 console.log(campos);
 
+
 const cargarIngredientes = (listaIngredientes) => {
     //Con esto eliminamos la lista de ingredientes existentes
     const ingredientesNode = document.getElementById("ingredientes");
-    util.limpiarNodo(ingredientesNode, "div");
+    util.limpiarNodo(ingredientesNode, "p");
+    
+    /*const precioNode = document.getElementById("info");
+    util.limpiarNodo(precioNode, "p");
+    const pInfo = document.createElement("p");
+    precioNode.appendChild(pInfo);
+    pInfo.setAttribute("id", "info-precio");
+    pInfo.setAttribute("class", "btn");
+    */
 
     //Recorremos la lista de ingredientes, generando los elementos 
     //en la seccion de ingrecientes del HTML
@@ -59,12 +70,13 @@ const cargarIngredientes = (listaIngredientes) => {
         pWrapper.appendChild(label);
 
     });
+    console.log("Ingredientes cargados");
 };
 
 const cargarMasas = (listaMasa) =>{
     //eliminamos la lista de masas existente
     const masaNode = document.getElementById("masas");
-    util.limpiarNodo(masaNode, "div");
+    util.limpiarNodo(masaNode, "p");
 
     listaMasa.forEach((masas)=> {
         //Creamos cada elemento p que va a contener un RB del tipo de masa
@@ -91,12 +103,13 @@ const cargarMasas = (listaMasa) =>{
         pWrapper.appendChild(label);
 
     })
+    console.log("Masas cargadas");
 };
 
 const cargarTamanios = (listaTamanios) => {
     //Eliminamos la lista de tamaños existente
     const tamanioNode = document.getElementById("tamanios");
-    util.limpiarNodo(tamanioNode, "div");
+    util.limpiarNodo(tamanioNode, "p");
 
     //Recorremos la lista de tamaños:
     listaTamanios.forEach((tamanios)=> {
@@ -124,14 +137,16 @@ const cargarTamanios = (listaTamanios) => {
         //Colocamos el label en el documento
         pWrapper.appendChild(label);
     });
-
+    console.log("Tamanios cargados");
 };
+
 
 const cargarRestaurantes = (listaRestaurantes) => {
     const restauranteNode = document.getElementById("restaurantes");
-     util.limpiarNodo(restauranteNode, "div");
+     util.limpiarNodo(restauranteNode, "select");
 
      const select = document.createElement("select");
+     select.setAttribute("id", "restaurante");
      const option = document.createElement("option");
      option.setAttribute("value","default");
      let nombre = "Elige un restaurante";
@@ -148,7 +163,19 @@ const cargarRestaurantes = (listaRestaurantes) => {
         
         select.appendChild(optionRes);
     });
+    console.log("Restaurantes cargados");
+};
 
+
+function cargarInfo (){
+    console.log("Limpiando información del precio");
+    const precioNode = document.getElementById("info");
+    util.limpiarNodo(precioNode, "p");
+    const pInfo = document.createElement("p");
+    precioNode.appendChild(pInfo);
+    pInfo.setAttribute("id", "info-precio");
+    pInfo.setAttribute("class", "btn");
+    console.log("Creando boton de precio nuevo");
 };
 
 /*
@@ -160,6 +187,7 @@ const cargarRestaurantes = (listaRestaurantes) => {
  * @returns el precio
  */
 export function calcularPrecio(){
+    console.log("Calculando precio");
     let precio = 0;
     //Calculamos el precio del tamanio elegido
     const tamanioElegido = document.querySelector(
@@ -176,7 +204,6 @@ export function calcularPrecio(){
     const ingredientesElegidos = document.querySelectorAll(
         '#ingredientes input[type="checkbox"]:checked'
     );
-    console.log(ingredientesElegidos);
     ingredientesElegidos.forEach((ingElegido) => {
         precio += ingredientes.find(
             (ing) => ing.nombre.split(" ").join("") === ingElegido.name
@@ -188,6 +215,7 @@ export function calcularPrecio(){
     infoPrecio.textContent = `Precio: ${precio}\u20AC`;
     infoPrecio.classList.add("visible");
     
+    console.log("El precio es: ", precio);
     return precio;
     
 }
@@ -240,23 +268,18 @@ const agregarEventListeners = () => {
     });
 
     //Validacion inmediata del restaurante
-    //const restSelect = document.querySelector('#restaurantes input[type="option"]');
-    const opRest = document.querySelectorAll(
-        'option:not([value=""])' //descartamos la opcion por defecto
-    );
-    opRest.forEach((rest) =>{
-        rest.addEventListener("change", validacion.validarRestaurante);
-        rest.addEventListener("click", validacion.validarRestaurante)
-       });
-       console.log("he pasado por la validacion inmediata");
-
-
-
-    
+    restaurante.addEventListener("change", validacion.validarRestaurante) ;
+   
     
     //validacion inmediata de los terminos y condiciones
+    
     const terminos = document.getElementById("terminos");
-    terminos.onclick = validacion.validarTerminos;
+
+    terminos.addEventListener("click", validacion.validarTerminos);
+
+    const reset = document.getElementById("reset");
+    reset.addEventListener("click", cargarInfo);
+
 
      //recarga de la pagina a partir del boton de refrescar
     const refrescar = document.getElementById("refresh");

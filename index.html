@@ -75,6 +75,7 @@
                     <div id="masas">
                     </div>
                     <span class="mensaje-error" id="mensaje-masa"></span>
+                    
                 </fieldset>
             </section>
             <section class="cajaSeccion">
@@ -88,27 +89,28 @@
             </section>
 
             <section class="cajaSeccion">
+                <div id="info">
                 <!-- Creamos el parrafo que mostrará el precio de la pizza según lo que seleccionemos -->
-                <p id="info-precio" class="btn"></p>
+            </div>
             </section>
 
             <section class="cajaSeccion">
-            <label class="contc-title" for="opciones-restaurante">Elige el RicoRestaurante</label>
-            <fieldset class="opciones-restaurante">
-                <div id="restaurantes">
-                </div>
-
-                <span class="mensaje-error" id="mensaje-restaurante"></span>
-                <div class="map-container" id="mapa">
-                </div>
-            </fieldset>
+                <label class="contc-title" for="opciones-restaurante">Elige el RicoRestaurante</label>
+                <fieldset class="opciones-restaurante">
+                    <div id="restaurantes">
+                    </div>
+                    <span class="mensaje-error" id="mensaje-restaurante"></span>
+                    <div class="map-container" id="mapa">
+                    </div>
+                </fieldset>
             </section>
-
+  
             <section class="cajaSeccion">
             <fieldset class="alergias-terminos">
                 <label for="textArea">Introduce aquí información sobre alergias u otras notas adicionales: </label>
                 <textarea id="textArea" cols="40" rows="4" placeholder="Escribe aquí:"></textarea>           
-                <div>
+          
+                <div class="divTerminos">
                     <input type="checkbox" name="terminos" id="terminos" value="true">
                     <label for="terminos">Acepto los términos y condiciones</label>
                     <span class="mensaje-error" id="mensaje-terminos"></span>
@@ -125,6 +127,9 @@
             </section>  
 
         </form>
+
     </section>
+
+
 </body>
 </html>

@@ -95,23 +95,26 @@ input + label {
 textarea{
   width: 100%;
 }
+#ingredientes p, #masas p, #tamanios p {
+  margin: 0.5rem;
+}
 
 
 
-#acciones {
-    display: flex;
-    justify-content: space-evenly;
+  .cajaMapa{
+    position:fixed; 
+    top:0;
   }
 
   .map-container{
     height: 100%;
+    width:100%;
     margin: 0;
     padding: 0;
   }
 
   #mapa {
-    height: 100%;
-    
+    height: 300px;
   }
 
 

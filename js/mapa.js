@@ -20,7 +20,6 @@ function initMap() {
 
 function myMapEx(myPosition){
   const coords = myPosition.coords;
-  console.log("las coordenadas", coords);
 
 
   const myMapProperties = {
@@ -51,7 +50,6 @@ function myMapEx(myPosition){
     marker.setMap(myMap);
     marker.addListener("click", restauranteClickHandler);
     array.push(marker);
-    console.log("array en myMapEx", array);
    
 }
 
@@ -63,6 +61,7 @@ function myMapEx(myPosition){
  * cuando seleccionamos de la lista
  */
  function selectRestClickHandler(rest) {
+  console.log("ESTOY EN SELECTRESTCLICK" );
 
   let id;
   let la;
@@ -84,18 +83,16 @@ function myMapEx(myPosition){
     }
   };
 
-  console.log(opciones.position);
-  console.log(opciones.title);
+
 
   const marker = new google.maps.Marker(opciones);
-  console.log("Aqui el marker",marker);
 
     array.forEach((marcador) =>{
       let nomAn = marcador.title;
       let nomUS = marker.title;
 
       if ( nomAn === nomUS ){
-      console.log(marcador.title, "y", marker.title,"Son iguales")
+  
       
       if (!infoWindow) {
         // si no existe ya, se crea la infoWindow
@@ -141,11 +138,11 @@ function myMapEx(myPosition){
  * @param {} nombre nombre del restaurante
  */
  const seleccionarRestaurante = (nombre) => {
+
   const restaurante = listaRestaurantes.filter(
     (rest) => rest.nombre === nombre
   )[0]; //filtramos por nombre y cogemos el primer elemento del array filtrado
   //buscamos el restaurante en documento y lo seleccionamos
-  console.log("PROBANDO",restaurante);
   const nodoRestaurante = document
     .getElementById("restaurantes")
     .querySelector(`option[value=${restaurante.id}]`);

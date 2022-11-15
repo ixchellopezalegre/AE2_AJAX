@@ -104,7 +104,7 @@ function validarApellidos() {
       apellidos.classList.add("invalido");
       mensaje.textContent = "Introduce un apellido válido";
     } else {
-      if (nombre.classList.contains("invalido"))
+      if (apellidos.classList.contains("invalido"))
         apellidos.classList.remove("invalido");
         mensaje.textContent = "";
     }
@@ -340,7 +340,6 @@ function validarMasa() {
     const ingrCheckbox = document.querySelectorAll(
       '#ingredientes input[type="checkbox"]'
     );
-    console.log(ingrCheckbox);
     // iteramos por las checkboxes para ver si alguna esta marcada
     // y actualizar el resultado de la validacion
     for (let chckbx of ingrCheckbox) {
@@ -381,11 +380,15 @@ function validarMasa() {
   const opcionesRestaurante = document.querySelectorAll(
       'option' //descartamos la opcion por defecto
   );
+  console.log("VALIDANDO");
+  
+    
   
     for (const rest of opcionesRestaurante) {
         let valor = rest.getAttribute("value");
         
         if(rest.selected && (valor != "default")) {
+          console.log(valor);
           selectRestClickHandler(rest);
           valido = true;
           break;
@@ -413,19 +416,29 @@ function validarMasa() {
  * @returns true si se han aceptado, false si no
  */
 function validarTerminos() {
-    const mensaje = document.getElementById("mensaje-terminos");
-  
-    if (!terminos.checked) {
-      terminos.classList.add("invalido");
-      mensaje.textContent =
-        "Es necesario aceptar los terminos y condiciones antes de realizar el pedido";
-    } else {
-      if (terminos.classList.contains("invalido"))
-        terminos.classList.remove("invalido");
-        mensaje.textContent = "";
-    }
+  const mensaje = document.getElementById("mensaje-terminos");
+  let terminosCbx = document.getElementById("terminos");
+  console.log("  A VER ");
+  console.log(terminosCbx);
 
-    return terminos.checked;
+  let valido = false;
+
+   valido = terminosCbx.checked;
+   if(!valido) terminosCbx.classList.add("invalido");
+   else if (terminosCbx.classList.contains("invalido"))
+   terminosCbx.classList.remove("invalido");
+
+   console.log("  clase ");
+   console.log(terminosCbx.classList);
+   console.log("  A VER ");
+  console.log(valido);
+
+  if(valido) mensaje.textContent = "";
+  else mensaje.textContent = "Elige al menos un ingrediente para tu pizza";
+  console.log("  A VER EL MENSAJE ");
+  console.log(mensaje.textContent);
+
+  return valido;
   }
 
   export {

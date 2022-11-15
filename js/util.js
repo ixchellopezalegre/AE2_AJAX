@@ -10,6 +10,7 @@
     elementosAEliminar.forEach((elem) => {
       elem.parentElement.removeChild(elem);
     });
+    console.log("Limpiando los nodos");
   }
   
   /**
