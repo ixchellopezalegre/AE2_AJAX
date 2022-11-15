@@ -26,7 +26,6 @@ nav{
 
 nav a{
   text-decoration: none;
-  font-size: 18px;
   color: rgb(255, 222, 124);
   font-size: 16px;
   padding-left: 20px;
@@ -195,4 +194,16 @@ input[type="radio"].invalido {
   width: 10px;
   height: 10px;
   border-radius: 20px;
+}
+
+footer{
+  background-color: rgba(0, 0, 0, 0.350);
+  margin-top: 50px;
+  padding: 0.5rem;
+  text-align: center;
+}
+
+.footer_text{
+  color: white;
+  font-size: 14px;  
 }
